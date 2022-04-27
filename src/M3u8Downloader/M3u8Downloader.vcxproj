@@ -163,7 +163,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CM3u8Download.cpp" />
+    <ClCompile Include="CMovieDownloadBase.cpp" />
     <ClCompile Include="M3u8Downloader.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CM3u8Download.h" />
+    <ClInclude Include="CMovieDownloadBase.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
