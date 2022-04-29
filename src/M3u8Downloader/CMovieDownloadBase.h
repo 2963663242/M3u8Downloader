@@ -1,10 +1,12 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class CMovieDownloadBase
 {
 
 public:
-
-private:
+	CMovieDownloadBase();
+protected:
 	long long int v8;
 	long long int v10;
 	long long int v18;
@@ -23,5 +25,11 @@ private:
 	long long int v70;
 	 int v78;
 	 int v7C;
+	 string guid;
+	 char v88;
+	 long long int v98;
+	 string vA8;
+	char vB0;
+	long long int vC0;
 };
 

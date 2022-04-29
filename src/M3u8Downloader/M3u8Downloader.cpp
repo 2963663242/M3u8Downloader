@@ -10,7 +10,7 @@ void * MovieDLCreate() {
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    MovieDLCreate();
 }
 
 

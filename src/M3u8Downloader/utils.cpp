@@ -1,9 +1,15 @@
-#include <stdio.h>
-#include <objbase.h>
+#include "utils.h"
+#include <windows.h>
+
+#pragma comment(lib, "ws2_32.lib")
 
 
+bool g_flag = 0;
+unsigned int g_count = 0;
+int g_initFlag;
+unsigned int  currentTime = -1;
 
-void* getGuidString(void* pointer) {
+std::string getGuid() {
 
     char buffer[64] = { 0, };
     GUID pguid;
@@ -22,5 +28,70 @@ void* getGuidString(void* pointer) {
         pguid.Data4[7]);
     int len = strlen(buffer);
 
-    return nullptr;
+    return std::string(buffer, len);
+}
+
+bool initFlag() {
+    if (g_flag == false) {
+        g_flag = true;
+    }
+    return true;
+}
+int initWSA() {
+    WSAData wsdata;
+    int ret = WSAStartup(514,&wsdata);
+    if (ret == 0) {
+       unsigned int version = wsdata.wVersion;
+        if ((version & 0xFF) == 2 && ((version >> 8) & 0xFF) == 2) {
+            return 0;
+        }
+        WSACleanup();
+    }
+    return 2;
+}
+
+template<typename T>
+T __rol(T val, size_t count)
+{
+    size_t bitcount = sizeof(T) * 8;
+
+    count %= bitcount;
+    return (val << count) | (val >> (bitcount - count));
+}
+
+template<typename T>
+T __ror(T val, size_t count)
+{
+    size_t bitcount = sizeof(T) * 8;
+
+    count %= bitcount;
+    return (val >> count) | (val << (bitcount - count));
+}
+time_t transferTime() {
+    currentTime = currentTime * 0x41C64E6D + 0x3039;
+    return __rol(currentTime, 16);
+}
+time_t getCurrentTime() {
+    currentTime = time(0);
+    transferTime();
+    transferTime();
+    return transferTime();
+}
+
+int init(int flag)
+{
+    int count = g_count;
+    g_count += 1;
+    if (count == 0) {
+        if (flag & 1) {
+            if (!initFlag())
+                return 2;
+        }
+        if (flag & 2) {
+            if (initWSA()!=0) return 2;
+            g_initFlag = flag;
+            getCurrentTime();
+        }
+    }
+    return 0;
 }
