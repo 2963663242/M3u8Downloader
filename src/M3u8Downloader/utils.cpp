@@ -6,8 +6,8 @@
 
 bool g_flag = 0;
 unsigned int g_count = 0;
-int g_initFlag;
-unsigned int  currentTime = -1;
+int g_initFlag = 0;
+unsigned int  currentTime = 0;
 
 std::string getGuid() {
 
