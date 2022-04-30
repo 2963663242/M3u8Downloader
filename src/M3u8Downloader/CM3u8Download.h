@@ -8,6 +8,6 @@ public:
 public:
 	int vD8;
 	char vDC = 1;
-	long long int E8;
+	headerchain* headerchain;
 };
 

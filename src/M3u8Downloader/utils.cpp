@@ -95,3 +95,35 @@ int init(int flag)
     }
     return 0;
 }
+headerchain* getLastHeader(headerchain* headers) {
+    
+    headerchain* now;
+    if (headers == 0)
+        return 0;
+    if (headers->next == 0)
+        return headers;
+    headers = headers->next;
+    do {
+        now = headers;
+        headers = headers->next;
+    } while (headers != 0);
+    return now;
+}
+
+headerchain* headersAppend(headerchain* headers, const char* cell) {
+    headerchain* lastHeader;
+    headerchain* newHeader = (headerchain *)malloc(16);
+   
+    if (newHeader == 0) return 0;
+    char* vCell = _strdup(cell);
+    if (vCell == 0) {
+        free(newHeader);
+    }
+    newHeader->next = 0;
+    newHeader->cell = vCell;
+    if (headers == 0)
+        return newHeader;
+    lastHeader = getLastHeader(headers);
+    lastHeader->next = newHeader;
+    return headers;
+}

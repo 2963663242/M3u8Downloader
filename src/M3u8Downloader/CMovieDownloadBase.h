@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "utils.h"
 using namespace std;
 class CMovieDownloadBase
 {
@@ -14,7 +15,7 @@ public:
 	char * savePath;
 	char * infoSavePath;
 	char * url;
-	char* strCookie;
+	char * strCookie;
 	long long int v48;
 	long long int v50;
 	long long int v58;
