@@ -14,7 +14,7 @@ public:
 	char * savePath;
 	char * infoSavePath;
 	char * url;
-	long long int v40;
+	char* strCookie;
 	long long int v48;
 	long long int v50;
 	long long int v58;

@@ -46,10 +46,31 @@ void MovieDLSetSavePath(CM3u8Download* downloader, const char* savePath) {
     }
 
 }
+
+void MovieDLSetCookie(CM3u8Download* downloader, const char* strCookie) {
+
+    if (downloader != 0) {
+
+        if (downloader->strCookie != 0) {
+            free(downloader->strCookie);
+        }
+        downloader->strCookie = 0;
+        if (strCookie != 0) {
+            downloader->strCookie = _strdup(strCookie);
+        }
+    }
+}
 int main()
 {
+    string url = "https://blog.csdn.net/keith_bb/article/details/51333473";
+    string savePath = "1.mp4";
+    string strCookie = "";
     CM3u8Download* downloader = MovieDLCreate();
-    MovieDLSetSavePath(downloader, "1.mp4");
+    MovieDLSetUrl(downloader, url.c_str());
+    MovieDLSetSavePath(downloader, savePath.c_str());
+    MovieDLSetCookie(downloader, strCookie.c_str());
+
+    return 0;
 }
 
 
