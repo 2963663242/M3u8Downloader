@@ -1,5 +1,4 @@
 #include "utils.h"
-#include <windows.h>
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -8,8 +7,9 @@ bool g_flag = 0;
 unsigned int g_count = 0;
 int g_initFlag = 0;
 unsigned int  currentTime = 0;
+char logPath[1024] = { 0 };
 
-std::string getGuid() {
+string getGuid() {
 
     char buffer[64] = { 0, };
     GUID pguid;
@@ -127,3 +127,14 @@ headerchain* headersAppend(headerchain* headers, const char* cell) {
     lastHeader->next = newHeader;
     return headers;
 }
+
+long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
+{
+    return 0;
+}
+
+unsigned int StartAddress(void* downloader) {
+
+    return 0;
+}
+

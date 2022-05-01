@@ -6,9 +6,13 @@ class CMovieDownloadBase
 {
 
 public:
+
 	CMovieDownloadBase();
+	virtual int start(bool flag1,bool flag2);
+
 public:
-	long long int v8;
+
+	uintptr_t threadResult;
 	long long int v10;
 	long long int v18;
 	char * dsSavePath;
@@ -20,8 +24,8 @@ public:
 	long long int v50;
 	long long int v58;
 	int v60;
-	char v64;
-	char v65;
+	bool flag1;
+	bool flag2;
 	long long int v68;
 	long long int v70;
 	 int v78;

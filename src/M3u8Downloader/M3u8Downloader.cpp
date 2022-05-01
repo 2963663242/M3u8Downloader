@@ -35,9 +35,9 @@ void MovieDLSetSavePath(CM3u8Download* downloader, const char* savePath) {
         }
         
         downloader->savePath = _strdup(savePath);
-        downloader->dsSavePath = (char *)malloc(strlen(savePath)+3);
+        downloader->dsSavePath = (char *)malloc(strlen(savePath)+1+3);
 
-        downloader->infoSavePath = (char*)malloc(strlen(savePath) + 5);
+        downloader->infoSavePath = (char*)malloc(strlen(savePath) +1+ 5);
 
         strcpy_s(downloader->dsSavePath,strlen(savePath)+1, savePath);
         strcpy_s(downloader->dsSavePath + strlen(downloader->dsSavePath), strlen(".ds") + 1, ".ds");
@@ -72,6 +72,12 @@ void MovieDLSetHeader(CM3u8Download* downloader, const char* key, const char* va
     }
 }
 
+void MovieDLStart(CM3u8Download* downloader, bool startFlag1, bool startFlag2) {
+    if (downloader != 0) {
+        downloader->start(startFlag1, startFlag2);
+    }
+}
+
 int main()
 {
     string url = "https://blog.csdn.net/keith_bb/article/details/51333473";
@@ -93,7 +99,7 @@ int main()
 
         MovieDLSetHeader(downloader, iter->first.c_str(), iter->second.c_str());
     }
-
+    MovieDLStart(downloader, true, false);
     return 0;
 }
 
