@@ -1,7 +1,7 @@
 #include "utils.h"
-
+#include <Dbghelp.h>
 #pragma comment(lib, "ws2_32.lib")
-
+#pragma comment(lib, "Dbghelp.lib")
 
 bool g_flag = 0;
 unsigned int g_count = 0;
@@ -130,6 +130,27 @@ headerchain* headersAppend(headerchain* headers, const char* cell) {
 
 long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
 {
+    char Text[1024] = {0,};
+    if (logPath)
+    {
+        HANDLE file = CreateFileA(logPath, 0x40000000, 0, 0, 2, 128, 0);
+        if (file != INVALID_HANDLE_VALUE) {
+            
+            MINIDUMP_EXCEPTION_INFORMATION ExceptionParam;
+            ExceptionParam.ClientPointers = 0;
+            ExceptionParam.ExceptionPointers = ExceptionInfo;
+            ExceptionParam.ThreadId = GetCurrentThreadId();
+      
+            bool ret = MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), file, MiniDumpNormal, ExceptionInfo?&ExceptionParam:0, 0, 0);
+            CloseHandle(file);
+        }
+        sprintf_s(
+            Text,
+            "Application Fault! \r\nPlease send the following the file to our support center:\r\n%s",
+            logPath);
+        
+        MessageBoxA(0, Text, "Application Fault", 0x11010);
+    }
     return 0;
 }
 

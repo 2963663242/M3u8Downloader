@@ -17,6 +17,9 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 	memset(logPath, 0, 1024);
 	sprintf_s(logPath, "%s%s.mdmp", curDir, "\\Log\\Download");
 	SetUnhandledExceptionFilter(lpTopLevelExceptionFilter);
+	//测试lpTopLevelExceptionFilter函数
+	// int * a = 0;
+	// *a = 1;
 	if (this->threadResult != 0) {
 		return 0;
 	}
