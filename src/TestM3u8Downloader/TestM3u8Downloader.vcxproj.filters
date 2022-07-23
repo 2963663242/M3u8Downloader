@@ -18,5 +18,28 @@
     <ClCompile Include="M3u8Downloader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CM3u8Download.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMovieDownloadBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hook.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CM3u8Download.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CMovieDownloadBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
