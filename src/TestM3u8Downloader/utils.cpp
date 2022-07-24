@@ -1,14 +1,15 @@
 #include "utils.h"
 #include <Dbghelp.h>
 #include "hook.hpp"
-
+#include "CMovieDownloadBase.h"
+#include <string>
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
 
 bool *g_flag = (bool *)0x00000001800B468C;
 unsigned int *g_count =(unsigned int*)0x00000001800B4680;
 int *g_initFlag = (int*)0x00000001800B4684;
-unsigned int  currentTime = 0;
+time_t * currentTime = (time_t*)0x00000001800B4688;
 char logPath[1024] = { 0 };
 
 void hookinit()
@@ -16,12 +17,26 @@ void hookinit()
     hook hk;
    
     hk.hook_by_code((FARPROC)0x0000000180021930,(PROC)init);
+    char buf[64] = { 0 };
+
+    sprintf(buf, "%I64u", &CMovieDownloadBase::getGuid);
+  
+    long long a = atoll(buf);
+
+    hk.hook_by_code((FARPROC)0x000000018000ADB0, (PROC)a);
+    sprintf(buf, "%I64u", &CMovieDownloadBase::CMovieDownloadBaseEx);
+
+   a = atoll(buf);
+
+    hk.hook_by_code((FARPROC)0x000000018000AC95, (PROC)a);
+    
+  
 }
 
-string getGuid() {
-
+string getGuid(void * rcx){
     char buffer[64] = { 0, };
     GUID pguid;
+
     CoCreateGuid(&pguid);
 
     sprintf_s(buffer, 64, "{%08X%04X%04X%02X%02X%02X%02X%02X%02X%02X%02X}", pguid.Data1,
@@ -35,9 +50,13 @@ string getGuid() {
         pguid.Data4[5],
         pguid.Data4[6],
         pguid.Data4[7]);
-    int len = strlen(buffer);
-
-    return std::string(buffer, len);
+   // int len = strlen(buffer);
+   //memcpy_s(guidstring, sizeof(string), &str, sizeof(string));
+   
+   
+    //guidstring->copy(buffer, len);
+   
+    return buffer;
 }
 
 bool initFlag() {
@@ -77,11 +96,11 @@ T __ror(T val, size_t count)
     return (val >> count) | (val << (bitcount - count));
 }
 time_t transferTime() {
-    currentTime = currentTime * 0x41C64E6D + 0x3039;
-    return __rol(currentTime, 16);
+    *currentTime = *currentTime * 0x41C64E6D + 0x3039;
+    return __rol(*currentTime, 16);
 }
 time_t getCurrentTime() {
-    currentTime = time(0);
+    *currentTime = time(0);
     transferTime();
     transferTime();
     return transferTime();
@@ -97,6 +116,9 @@ int init(int flag)
         }
             *g_initFlag = flag;
             getCurrentTime();
+    //         struct tm* timeinfo; 
+    //timeinfo = localtime(currentTime);
+    //printf("The current date/time is: %s", asctime(timeinfo));
 
     }
     return 0;

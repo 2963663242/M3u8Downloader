@@ -1,14 +1,15 @@
 #pragma once
 #include <iostream>
-#include "utils.h"
+
 using namespace std;
 class CMovieDownloadBase
 {
 
 public:
-
 	CMovieDownloadBase();
+	CMovieDownloadBase *CMovieDownloadBaseEx();
 	virtual int start(bool flag1,bool flag2);
+	string getGuid();
 
 public:
 

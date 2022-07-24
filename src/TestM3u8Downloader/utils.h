@@ -6,7 +6,7 @@ using namespace std;
 extern bool *g_flag;
 extern int * g_initFlag;
 extern unsigned int *g_count;
-extern unsigned int  currentTime;
+extern time_t* currentTime;
 extern char logPath[1024];
 typedef struct  _headerchain
 {
@@ -14,7 +14,7 @@ typedef struct  _headerchain
 	_headerchain* next;
 }headerchain;
 void hookinit();
-string getGuid();
+string getGuid(void* rcx);
 bool initFlag();
 int init(int flag);
 headerchain* headersAppend(headerchain* headers, const char* cell);
