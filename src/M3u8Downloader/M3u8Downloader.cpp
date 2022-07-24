@@ -80,7 +80,7 @@ void MovieDLStart(CM3u8Download* downloader, bool startFlag1, bool startFlag2) {
 
 int main()
 {
-    string url = "https://blog.csdn.net/keith_bb/article/details/51333473";
+    string url = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
     string savePath = "1.mp4";
     string strCookie = "";
     map<string, string> http_headers = {
