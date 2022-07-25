@@ -4,7 +4,7 @@
 #include <thread>
 #include <Windows.h>
 #include "utils.h"
-
+#include "M3u8DownloaderHook.h"
 using namespace std;
 
 ULONGLONG (*MovieDLCreate)(void);
@@ -40,17 +40,17 @@ int main()
 		{"Accept-Language" , "en-us,en;q=0.5"},
 };
 	const char* data=nullptr;
-
+	int a = sizeof(string);
 
 	instance = MovieDLCreate();
-	MovieDLSetUrl(instance, strUrl);
-	MovieDLSetSavePath(instance,strSavePath);
-	MovieDLSetCookie(instance, strCookie);
+	M3u8DownloaderHook::MovieDLSetUrl((CM3u8Download *)instance, strUrl);
+	M3u8DownloaderHook::MovieDLSetSavePath((CM3u8Download*)instance,strSavePath);
+	M3u8DownloaderHook::MovieDLSetCookie((CM3u8Download*)instance, strCookie);
 
 	map<string, string>::iterator iter;
 	for (iter = http_headers.begin(); iter != http_headers.end(); iter++) {
 
-		MovieDLSetHeader(instance, iter->first.c_str(), iter->second.c_str());
+	M3u8DownloaderHook::MovieDLSetHeader((CM3u8Download*)instance, iter->first.c_str(), iter->second.c_str());
 	}
 
 	MovieDLStart(instance, true, false);

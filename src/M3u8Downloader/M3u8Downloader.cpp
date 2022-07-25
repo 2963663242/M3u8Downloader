@@ -78,29 +78,29 @@ void MovieDLStart(CM3u8Download* downloader, bool startFlag1, bool startFlag2) {
     }
 }
 
-int main()
-{
-    string url = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
-    string savePath = "1.mp4";
-    string strCookie = "";
-    map<string, string> http_headers = {
-        {"User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.116 Safari/537.36"},
-        {"Accept-Charset" , "ISO-8859-1,utf-8;q=0.7,*;q=0.7"},
-        {"Accept" ,"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
-        {"Accept-Language" , "en-us,en;q=0.5"},
-    };
-
-    CM3u8Download* downloader = MovieDLCreate();
-    MovieDLSetUrl(downloader, url.c_str());
-    MovieDLSetSavePath(downloader, savePath.c_str());
-    MovieDLSetCookie(downloader, strCookie.c_str());
-    map<string, string>::iterator iter;
-    for (iter = http_headers.begin(); iter != http_headers.end(); iter++) {
-
-        MovieDLSetHeader(downloader, iter->first.c_str(), iter->second.c_str());
-    }
-    MovieDLStart(downloader, true, false);
-    return 0;
-}
-
-
+//int main()
+//{
+//    string url = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+//    string savePath = "1.mp4";
+//    string strCookie = "";
+//    map<string, string> http_headers = {
+//        {"User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.116 Safari/537.36"},
+//        {"Accept-Charset" , "ISO-8859-1,utf-8;q=0.7,*;q=0.7"},
+//        {"Accept" ,"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
+//        {"Accept-Language" , "en-us,en;q=0.5"},
+//    };
+//
+//    CM3u8Download* downloader = MovieDLCreate();
+//    MovieDLSetUrl(downloader, url.c_str());
+//    MovieDLSetSavePath(downloader, savePath.c_str());
+//    MovieDLSetCookie(downloader, strCookie.c_str());
+//    map<string, string>::iterator iter;
+//    for (iter = http_headers.begin(); iter != http_headers.end(); iter++) {
+//
+//        MovieDLSetHeader(downloader, iter->first.c_str(), iter->second.c_str());
+//    }
+//    MovieDLStart(downloader, true, false);
+//    return 0;
+//}
+//
+//

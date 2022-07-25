@@ -17,18 +17,18 @@ void hookinit()
     hook hk;
    
     hk.hook_by_code((FARPROC)0x0000000180021930,(PROC)init);
-    char buf[64] = { 0 };
+   // char buf[64] = { 0 };
 
-    sprintf(buf, "%I64u", &CMovieDownloadBase::getGuid);
+   // sprintf(buf, "%I64u", &CMovieDownloadBase::getGuid);
   
-    long long a = atoll(buf);
+   // long long a = atoll(buf);
 
-    hk.hook_by_code((FARPROC)0x000000018000ADB0, (PROC)a);
-    sprintf(buf, "%I64u", &CMovieDownloadBase::CMovieDownloadBaseEx);
+   // hk.hook_by_code((FARPROC)0x000000018000ADB0, (PROC)a);
+   // sprintf(buf, "%I64u", &CMovieDownloadBase::CMovieDownloadBaseEx);
 
-   a = atoll(buf);
+   //a = atoll(buf);
 
-    hk.hook_by_code((FARPROC)0x000000018000AC95, (PROC)a);
+   // hk.hook_by_code((FARPROC)0x000000018000AC95, (PROC)a);
     
   
 }

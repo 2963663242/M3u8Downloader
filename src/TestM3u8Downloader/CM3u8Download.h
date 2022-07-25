@@ -7,8 +7,10 @@ public:
 	CM3u8Download();
 
 public:
+	void* vD0;
 	int vD8;
 	char vDC = 1;
+	void* vE0;
 	headerchain* headerchain;
 };
 
