@@ -12,7 +12,7 @@ public:
         return downloader;
     }
 
-    void static MovieDLSetUrl(CM3u8Download* downloader, const char* url) {
+        static void  MovieDLSetUrl(CM3u8Download* downloader, const char* url) {
         if (downloader != nullptr) {
             if (url != 0) {
                 if (downloader->url != 0) {
@@ -24,7 +24,7 @@ public:
         }
     }
 
-    void static MovieDLSetSavePath(CM3u8Download* downloader, const char* savePath) {
+    static void  MovieDLSetSavePath(CM3u8Download* downloader, const char* savePath) {
         if (downloader != nullptr) {
             assert(savePath != 0);
             if (downloader->savePath != 0) {
@@ -50,7 +50,7 @@ public:
 
     }
 
-    void static MovieDLSetCookie(CM3u8Download* downloader, const char* strCookie) {
+    static void  MovieDLSetCookie(CM3u8Download* downloader, const char* strCookie) {
 
         if (downloader != 0) {
 
@@ -64,7 +64,7 @@ public:
         }
     }
 
-    void static MovieDLSetHeader(CM3u8Download* downloader, const char* key, const char* value) {
+    static void  MovieDLSetHeader(CM3u8Download* downloader, const char* key, const char* value) {
 
         if (downloader != 0) {
             string cell(key);
@@ -74,11 +74,14 @@ public:
         }
     }
 
-    void static MovieDLStart(CM3u8Download* downloader, bool startFlag1, bool startFlag2) {
+    static  void  MovieDLStart(CM3u8Download* downloader, bool startFlag1, bool startFlag2) {
         if (downloader != 0) {
             downloader->start(startFlag1, startFlag2);
         }
     }
-
+    static  char *  MovieDLGetState(CM3u8Download* downloader) {
+        if(downloader)
+            return _strdup(downloader->state.data());
+    }
 };
 

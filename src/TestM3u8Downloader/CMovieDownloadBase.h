@@ -6,13 +6,12 @@ class CMovieDownloadBase
 {
 
 public:
-	CMovieDownloadBase();
-	CMovieDownloadBase *CMovieDownloadBaseEx();
-	 int start(bool flag1,bool flag2);
+	 CMovieDownloadBase();
+	virtual CMovieDownloadBase *CMovieDownloadBaseEx();
+	 virtual int start(bool flag1,bool flag2);
 	string getGuid();
 
 public:
-	void* vft;
 	uintptr_t threadResult;
 	long long int v10;
 	long long int v18;
@@ -32,6 +31,6 @@ public:
 	 int v78;
 	 int v7C;
 	 string guid;
-	 string vA8;
+	 string state;
 };
 

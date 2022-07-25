@@ -53,11 +53,11 @@ int main()
 	M3u8DownloaderHook::MovieDLSetHeader((CM3u8Download*)instance, iter->first.c_str(), iter->second.c_str());
 	}
 
-	MovieDLStart(instance, true, false);
+	M3u8DownloaderHook::MovieDLStart((CM3u8Download*)instance, true, false);
 	do {
 		std::this_thread::sleep_for(chrono::milliseconds(2000));
 
-		data = MovieDLGetState(instance);
+		data = M3u8DownloaderHook::MovieDLGetState((CM3u8Download*)instance);
 
 	} while (!strstr(data, "download_complete"));
 

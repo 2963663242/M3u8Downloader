@@ -30,7 +30,7 @@ string CMovieDownloadBase::getGuid() {
 }
 CMovieDownloadBase* CMovieDownloadBase::CMovieDownloadBaseEx()
 {
-	this->vft = (void*)0x00000001800A19A0;
+	//this->vft = (void*)0x00000001800A19A0;
 	this->threadResult = 0;
 	this->v10 = 0;
 	this->v18 = 0;
@@ -50,7 +50,7 @@ CMovieDownloadBase* CMovieDownloadBase::CMovieDownloadBaseEx()
 	this->v78 = 0;
 	this->v7C = 0;
 	this->guid = "";
-	this->vA8 = "";
+	this->state = "";
 	
  this->guid = this->getGuid();
 	return this;
