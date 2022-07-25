@@ -17,13 +17,15 @@ void hookinit()
     hook hk;
    
     hk.hook_by_code((FARPROC)0x0000000180021930,(PROC)init);
-   // char buf[64] = { 0 };
+    char buf[64] = { 0 };
 
-   // sprintf(buf, "%I64u", &CMovieDownloadBase::getGuid);
+    sprintf(buf, "%I64u", &CMovieDownloadBase::start);
   
-   // long long a = atoll(buf);
+    long long a = atoll(buf);
 
-   // hk.hook_by_code((FARPROC)0x000000018000ADB0, (PROC)a);
+    /*void** start = (void**)0x00000001800A19A8;
+    *start = (void*)a;*/
+   // hk.hook_by_code((FARPROC)0x000000018000B180, (PROC)a);
    // sprintf(buf, "%I64u", &CMovieDownloadBase::CMovieDownloadBaseEx);
 
    //a = atoll(buf);
@@ -182,8 +184,8 @@ long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
     return 0;
 }
 
-unsigned int StartAddress(void* downloader) {
-
-    return 0;
-}
+//unsigned int StartAddress(void* downloader) {
+//
+//    return 0;
+//}
 

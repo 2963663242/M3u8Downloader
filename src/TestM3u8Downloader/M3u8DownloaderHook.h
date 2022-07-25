@@ -82,6 +82,7 @@ public:
     static  char *  MovieDLGetState(CM3u8Download* downloader) {
         if(downloader)
             return _strdup(downloader->state.data());
+        return 0;
     }
 };
 

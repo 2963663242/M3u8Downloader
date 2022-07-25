@@ -3,6 +3,10 @@
 #include <errhandlingapi.h>
 #include <process.h>
 
+//LONG(WINAPI* lpTopLevelExceptionFilter)(
+//	_In_ struct _EXCEPTION_POINTERS* ExceptionInfo
+//	) = (LONG(*)(_EXCEPTION_POINTERS*))0x000000018000B060;
+
 CMovieDownloadBase::CMovieDownloadBase()
 {
 	this->guid = getGuid();

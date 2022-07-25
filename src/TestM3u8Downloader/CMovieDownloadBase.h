@@ -1,5 +1,10 @@
 #pragma once
+#include "utils.h"
+#include <process.h>
+#include <processenv.h>
+#include <errhandlingapi.h>
 #include <iostream>
+
 
 using namespace std;
 class CMovieDownloadBase
@@ -7,11 +12,13 @@ class CMovieDownloadBase
 
 public:
 	 CMovieDownloadBase();
-	virtual CMovieDownloadBase *CMovieDownloadBaseEx();
-	 virtual int start(bool flag1,bool flag2);
+	virtual ~CMovieDownloadBase();
+	 CMovieDownloadBase *CMovieDownloadBaseEx();
+	 int start(bool flag1,bool flag2);
 	string getGuid();
 
 public:
+	//void *vft;
 	uintptr_t threadResult;
 	long long int v10;
 	long long int v18;
@@ -33,4 +40,6 @@ public:
 	 string guid;
 	 string state;
 };
+
+extern _beginthreadex_proc_type  StartAddress;
 

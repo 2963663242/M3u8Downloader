@@ -38,3 +38,6 @@ public:
 	long long int vC0;
 };
 
+//extern  LONG (WINAPI* lpTopLevelExceptionFilter)(
+//		_In_ struct _EXCEPTION_POINTERS* ExceptionInfo
+//		);

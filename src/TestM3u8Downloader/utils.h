@@ -1,7 +1,9 @@
 #ifndef __UTILS_LOCAL_DEFINED//避免结构体CMenuItemInfo重复定义
 #define __UTILS_LOCAL_DEFINED
+
 #include <iostream>
 #include <windows.h>
+
 using namespace std;
 extern bool *g_flag;
 extern int * g_initFlag;
@@ -19,5 +21,5 @@ bool initFlag();
 int init(int flag);
 headerchain* headersAppend(headerchain* headers, const char* cell);
 long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo);
-unsigned int StartAddress(void* downloader);
+//unsigned int StartAddress(void* downloader);
 #endif

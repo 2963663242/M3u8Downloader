@@ -1,6 +1,9 @@
 #pragma once
 #include "CMovieDownloadBase.h"
 #include "utils.h"
+
+
+
 class CM3u8Download: public CMovieDownloadBase
 {
 public:

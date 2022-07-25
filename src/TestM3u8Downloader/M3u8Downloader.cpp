@@ -54,6 +54,7 @@ int main()
 	}
 
 	M3u8DownloaderHook::MovieDLStart((CM3u8Download*)instance, true, false);
+	//MovieDLStart(instance, true, false);
 	do {
 		std::this_thread::sleep_for(chrono::milliseconds(2000));
 

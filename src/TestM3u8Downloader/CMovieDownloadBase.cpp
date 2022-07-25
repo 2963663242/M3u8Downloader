@@ -1,12 +1,14 @@
 #include "CMovieDownloadBase.h"
-#include "utils.h"
-#include <processenv.h>
-#include <errhandlingapi.h>
-#include <process.h>
+
+
+_beginthreadex_proc_type StartAddress =(_beginthreadex_proc_type)0x000000018000B290;
 
 CMovieDownloadBase::CMovieDownloadBase()
 {
 	this->guid = this->getGuid();
+}
+CMovieDownloadBase::~CMovieDownloadBase()
+{
 }
 string CMovieDownloadBase::getGuid() {
 	char buffer[64] = { 0, };
