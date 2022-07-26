@@ -5,10 +5,9 @@
 #include <windows.h>
 
 using namespace std;
-extern bool *g_flag;
-extern int * g_initFlag;
+
 extern unsigned int *g_count;
-extern time_t* currentTime;
+extern char logPath[MAX_PATH];
 
 typedef struct  _headerchain
 {

@@ -1,8 +1,6 @@
 #pragma once
 #include <cstdio>
 
-extern char* logPath;
-
 enum LogLevel {
 	Error,
 	Waring,

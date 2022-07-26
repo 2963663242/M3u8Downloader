@@ -7,11 +7,11 @@
 
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
-
-bool *g_flag = (bool *)0x00000001800B468C;
+char logPath[MAX_PATH];
+bool g_flag = 0;
 unsigned int *g_count =(unsigned int*)0x00000001800B4680;
-int *g_initFlag = (int*)0x00000001800B4684;
-time_t * currentTime = (time_t*)0x00000001800B4688;
+int g_initFlag;
+time_t  currentTime;
 
 
 
@@ -42,8 +42,8 @@ string getGuid(void * rcx){
 }
 
 bool initFlag() {
-    if (*g_flag == false) {
-        *g_flag = true;
+    if (g_flag == false) {
+        g_flag = true;
     }
     return true;
 }
@@ -78,11 +78,11 @@ T __ror(T val, size_t count)
     return (val >> count) | (val << (bitcount - count));
 }
 time_t transferTime() {
-    *currentTime = *currentTime * 0x41C64E6D + 0x3039;
-    return __rol(*currentTime, 16);
+    currentTime = currentTime * 0x41C64E6D + 0x3039;
+    return __rol(currentTime, 16);
 }
 time_t getCurrentTime() {
-    *currentTime = time(0);
+    currentTime = time(0);
     transferTime();
     transferTime();
     return transferTime();
@@ -96,7 +96,7 @@ int init(int flag)
             || 0!=0 ) {
             return 2;
         }
-            *g_initFlag = flag;
+            g_initFlag = flag;
             getCurrentTime();
     //         struct tm* timeinfo; 
     //timeinfo = localtime(currentTime);

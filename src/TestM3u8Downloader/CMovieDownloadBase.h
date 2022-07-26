@@ -15,6 +15,7 @@ public:
 	virtual ~CMovieDownloadBase();
 	 CMovieDownloadBase *CMovieDownloadBaseEx();
 	 int start(bool flag1,bool flag2);
+	
 	string getGuid();
 
 public:

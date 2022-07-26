@@ -4,7 +4,7 @@
 #include <time.h>
 
 
- char* logPath = (char*)0x00000001800BB8A0;
+
  FILE* Stream;
  PDWORD64 off_1800B2500 = (PDWORD64)0x1800B2500;
  DWORD dword_1800BBDC0 = 0;
