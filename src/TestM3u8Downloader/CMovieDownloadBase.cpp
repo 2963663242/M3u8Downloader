@@ -1,5 +1,5 @@
 #include "CMovieDownloadBase.h"
-
+#include "log.h"
 
 _beginthreadex_proc_type StartAddress =(_beginthreadex_proc_type)0x000000018000B290;
 
@@ -64,7 +64,7 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 	memset(curDir, 0, 1024);
 	GetCurrentDirectoryA(1024, curDir);
 	memset(logPath, 0, 1024);
-	sprintf_s(logPath, "%s%s.mdmp", curDir, "\\Log\\Download");
+	sprintf(logPath, "%s%s.mdmp", curDir, "\\Log\\Download");
 	SetUnhandledExceptionFilter(lpTopLevelExceptionFilter);
 	//测试lpTopLevelExceptionFilter函数
 	// int * a = 0;

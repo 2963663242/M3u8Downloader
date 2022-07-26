@@ -9,13 +9,13 @@ extern bool *g_flag;
 extern int * g_initFlag;
 extern unsigned int *g_count;
 extern time_t* currentTime;
-extern char logPath[1024];
+
 typedef struct  _headerchain
 {
 	char* cell;
 	_headerchain* next;
 }headerchain;
-void hookinit();
+
 string getGuid(void* rcx);
 bool initFlag();
 int init(int flag);

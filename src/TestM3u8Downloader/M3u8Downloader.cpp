@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include "utils.h"
 #include "M3u8DownloaderHook.h"
+#include "hookmiddle.h"
 using namespace std;
 
 ULONGLONG (*MovieDLCreate)(void);

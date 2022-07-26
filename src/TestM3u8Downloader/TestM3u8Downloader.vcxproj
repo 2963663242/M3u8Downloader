@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="CM3u8Download.cpp" />
     <ClCompile Include="CMovieDownloadBase.cpp" />
+    <ClCompile Include="log.cpp" />
     <ClCompile Include="M3u8Downloader.cpp" />
     <ClCompile Include="M3u8DownloaderHook.cpp" />
     <ClCompile Include="utils.cpp" />
@@ -181,6 +182,8 @@
     <ClInclude Include="CM3u8Download.h" />
     <ClInclude Include="CMovieDownloadBase.h" />
     <ClInclude Include="hook.hpp" />
+    <ClInclude Include="hookmiddle.h" />
+    <ClInclude Include="log.h" />
     <ClInclude Include="M3u8DownloaderHook.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

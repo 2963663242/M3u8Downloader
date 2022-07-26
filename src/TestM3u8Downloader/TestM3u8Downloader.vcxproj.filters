@@ -30,6 +30,9 @@
     <ClCompile Include="M3u8DownloaderHook.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hook.hpp">
@@ -45,6 +48,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="M3u8DownloaderHook.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="hookmiddle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
