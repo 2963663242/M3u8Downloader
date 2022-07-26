@@ -16,7 +16,8 @@ void (*MovieDLSetHeader)(ULONGLONG, const char*, const char*);
 void (*MovieDLStart)(ULONGLONG, bool, bool);
 const char* (*MovieDLGetState)(ULONGLONG);
 int main()
-{	
+{
+	
 	HMODULE dllDownloader = LoadLibrary(TEXT("M3u8Downloader.dll"));
 	hookinit();
 
@@ -42,7 +43,7 @@ int main()
 };
 	const char* data=nullptr;
 	int a = sizeof(string);
-
+	ALogInit((char *)"./log.txt");
 	instance = MovieDLCreate();
 	M3u8DownloaderHook::MovieDLSetUrl((CM3u8Download *)instance, strUrl);
 	M3u8DownloaderHook::MovieDLSetSavePath((CM3u8Download*)instance,strSavePath);
@@ -63,7 +64,7 @@ int main()
 
 	} while (!strstr(data, "download_complete"));
 
-
+	ALogFree();
 	return 0;
 }
 

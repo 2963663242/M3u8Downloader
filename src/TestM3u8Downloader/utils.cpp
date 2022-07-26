@@ -164,8 +164,4 @@ long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
     return 0;
 }
 
-//unsigned int StartAddress(void* downloader) {
-//
-//    return 0;
-//}
 

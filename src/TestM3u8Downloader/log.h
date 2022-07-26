@@ -2,7 +2,6 @@
 #include <cstdio>
 
 extern char* logPath;
-extern FILE** Stream;
 
 enum LogLevel {
 	Error,
@@ -12,3 +11,19 @@ enum LogLevel {
 };
 
 void LogD(int deLevel, const char* format, ...);
+void ALogInit(char* FileName);
+char* AGetLogFileName();
+void ALogFree();
+void ALogSetLevel(LogLevel level);
+
+class guard {
+public:
+	guard() {
+		InitializeCriticalSection(&this->cs);
+	}
+	~guard() {
+		DeleteCriticalSection(&this->cs);
+	}
+public:
+	CRITICAL_SECTION cs;
+};

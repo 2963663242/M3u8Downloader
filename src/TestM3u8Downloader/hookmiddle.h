@@ -3,7 +3,7 @@
 #include <iostream>
 #include "hook.hpp"
 #include "CMovieDownloadBase.h"
-
+#include "log.h"
 void inline hookinit() {
     hook hk;
 
@@ -13,7 +13,7 @@ void inline hookinit() {
     sprintf(buf, "%I64u", &CMovieDownloadBase::start);
 
     long long a = atoll(buf);
-
+    hk.hook_by_code((FARPROC)0x0000000180001050, (PROC)LogD);
     /*void** start = (void**)0x00000001800A19A8;
     *start = (void*)a;*/
     // hk.hook_by_code((FARPROC)0x000000018000B180, (PROC)a);
