@@ -7,7 +7,7 @@
 using namespace std;
 
 extern unsigned int *g_count;
-extern char logPath[MAX_PATH];
+extern char logPath[1024];
 
 typedef struct  _headerchain
 {

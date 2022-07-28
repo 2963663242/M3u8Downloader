@@ -84,4 +84,34 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 	
 }
 
+void CMovieDownloadBase::setCallbackState(stateCallback* stateInfo)
+{
+	string state = "";
+	char Buffer[MAX_PATH];
+	if (stateInfo->type == 0) {
+		state = "{event=MDEVENT_INIT";
+	}
+	else if (stateInfo->type == 1) {
+		state = "{event=download_error}";
+	}
+	else if (stateInfo->type == 2) {
+		state = "{event=download_connecting";
+	}
+	else if (stateInfo->type == 3) {
+		sprintf(Buffer, "{event=downloading, totoalSize=%lld, downloadingSize=%lld, }", stateInfo->totalSize, stateInfo->downloadingSize);
+		state = Buffer;
+	}
+	else if (stateInfo->type == 4) {
+		state = "{event=download_complete}";
+	}
+	long long * p = (__int64*)&this->state;
+	
+	*p = 0;
+	this->state = state;
+	LogD(LogLevel::Info, "callback %s", state.c_str());
+	if (this->v10 != 0 && this->v78 == 0) {
+		this->v10((char *)state.c_str());
+	}
+}
+
 

@@ -7,7 +7,7 @@
 
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
-char logPath[MAX_PATH];
+char logPath[1024] = {0,};
 bool g_flag = 0;
 unsigned int *g_count =(unsigned int*)0x00000001800B4680;
 int g_initFlag;

@@ -5,8 +5,10 @@
 #include <errhandlingapi.h>
 #include <iostream>
 
-
 using namespace std;
+
+struct stateCallback;
+
 class CMovieDownloadBase
 {
 
@@ -15,13 +17,14 @@ public:
 	virtual ~CMovieDownloadBase();
 	 CMovieDownloadBase *CMovieDownloadBaseEx();
 	 int start(bool flag1,bool flag2);
+	 void setCallbackState(stateCallback * stateInfo);
 	
 	string getGuid();
 
 public:
 	//void *vft;
 	uintptr_t threadResult;
-	long long int v10;
+	void  (*v10)(char *);
 	long long int v18;
 	char * dsSavePath;
 	char * savePath;
@@ -44,3 +47,11 @@ public:
 
 extern _beginthreadex_proc_type  StartAddress;
 
+struct stateCallback
+{
+	int type;
+	int nkn_4;
+	__int64 nkn_8;
+	__int64 downloadingSize;
+	__int64 totalSize;
+};

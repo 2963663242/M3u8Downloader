@@ -17,6 +17,12 @@ void inline hookinit() {
     hk.hook_by_code((FARPROC)0x0000000180001050, (PROC)LogD);
 
     hk.hook_by_code((FARPROC)0x0000000180009CC0, (PROC)sub_180009CC0);
+
+    
+
+    sprintf(buf, "%I64u", &CMovieDownloadBase::setCallbackState);
+    a = atoll(buf);
+    hk.hook_by_code((FARPROC)0x000000018000B3F0, (PROC)a);
     /*void** start = (void**)0x00000001800A19A8;
     *start = (void*)a;*/
     // hk.hook_by_code((FARPROC)0x000000018000B180, (PROC)a);
