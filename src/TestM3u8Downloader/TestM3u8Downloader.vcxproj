@@ -176,6 +176,7 @@
     <ClCompile Include="log.cpp" />
     <ClCompile Include="M3u8Downloader.cpp" />
     <ClCompile Include="M3u8DownloaderHook.cpp" />
+    <ClCompile Include="netlib.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +186,7 @@
     <ClInclude Include="hookmiddle.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="M3u8DownloaderHook.h" />
+    <ClInclude Include="netlib.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

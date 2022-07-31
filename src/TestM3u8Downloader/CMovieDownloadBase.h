@@ -32,9 +32,9 @@ public:
 	char * url;
 	char * strCookie;
 	long long int v48;
-	long long int v50;
+	char * useragent;
 	long long int v58;
-	int v60;
+	int speedLimit;
 	bool flag1;
 	bool flag2;
 	long long int v68;

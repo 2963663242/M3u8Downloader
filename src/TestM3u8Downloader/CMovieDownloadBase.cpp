@@ -42,9 +42,9 @@ CMovieDownloadBase* CMovieDownloadBase::CMovieDownloadBaseEx()
 	this->url = 0;
 	this->strCookie = 0;
 	this->v48 = 0;
-	this->v50 = 0;
+	this->useragent = 0;
 	this->v58 = 0;
-	this->v60 = 0;
+	this->speedLimit = 0;
 	this->flag1 = 0;
 	this->flag2 = 0;
 	this->v68 = 0;
