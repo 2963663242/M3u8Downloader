@@ -5,6 +5,7 @@
 #include <string>
 #include "log.h"
 
+
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
 char logPath[1024] = {0,};
@@ -105,9 +106,9 @@ int init(int flag)
     }
     return 0;
 }
-headerchain* getLastHeader(headerchain* headers) {
+curl_slist* getLastHeader(curl_slist* headers) {
     
-    headerchain* now;
+    curl_slist* now;
     if (headers == 0)
         return 0;
     if (headers->next == 0)
@@ -120,9 +121,9 @@ headerchain* getLastHeader(headerchain* headers) {
     return now;
 }
 
-headerchain* headersAppend(headerchain* headers, const char* cell) {
-    headerchain* lastHeader;
-    headerchain* newHeader = (headerchain *)malloc(16);
+curl_slist* headersAppend(curl_slist* headers, const char* cell) {
+    curl_slist* lastHeader;
+    curl_slist* newHeader = (curl_slist*)malloc(16);
    
     if (newHeader == 0) return 0;
     char* vCell = _strdup(cell);
@@ -130,7 +131,7 @@ headerchain* headersAppend(headerchain* headers, const char* cell) {
         free(newHeader);
     }
     newHeader->next = 0;
-    newHeader->cell = vCell;
+    newHeader->data = vCell;
     if (headers == 0)
         return newHeader;
     lastHeader = getLastHeader(headers);

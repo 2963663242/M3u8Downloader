@@ -1,4 +1,5 @@
 #pragma once
+#include <curl/curl.h>
 #include "CMovieDownloadBase.h"
 #include "utils.h"
 
@@ -13,8 +14,8 @@ public:
 public:
 	void* vD0;
 	int vD8;
-	char vDC = 1;
-	void* vE0;
-	headerchain* headerchain;
+	bool vDC = 1;
+	CURL* pCurl; 
+	curl_slist * headerchain;
 };
 

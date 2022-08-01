@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <windows.h>
-
+#include <curl/curl.h>
 using namespace std;
 
 extern unsigned int *g_count;
@@ -18,7 +18,7 @@ typedef struct  _headerchain
 string getGuid(void* rcx);
 bool initFlag();
 int init(int flag);
-headerchain* headersAppend(headerchain* headers, const char* cell);
+curl_slist* headersAppend(curl_slist* headers, const char* cell);
 long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo);
 //unsigned int StartAddress(void* downloader);
 #endif

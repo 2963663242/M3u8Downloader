@@ -3,7 +3,7 @@
 #include "log.h"
 CM3u8Download::CM3u8Download()
 {
-		init(3);
+	curl_global_init(CURL_GLOBAL_ALL); 
 }
 void CM3u8Download::download()
 {
