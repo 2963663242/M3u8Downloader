@@ -5,7 +5,6 @@
 #include "utils.h"
 #include "M3u8DownloaderHook.h"
 #include "hookmiddle.h"
-#include <regex>
 using namespace std;
 
 ULONGLONG (*MovieDLCreate)(void);
@@ -35,13 +34,10 @@ int main()
 	const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
 	const char* strSavePath = "1.mp4";
 	const char* strCookie = "";
-	map<string, string> http_headers = { 
-		{"User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.116 Safari/537.36"}, 
-		{"Accept-Charset" , "ISO-8859-1,utf-8;q=0.7,*;q=0.7"},
-		{"Accept" ,"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
-		{"Accept-Language" , "en-us,en;q=0.5"},
-};
-	const char* data=nullptr;
+	map<string, string> http_headers;
+	http_headers[string("User-Agent")] = string("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.116 Safari/537.36");
+
+	const char* data=0;
 	int a = sizeof(string);
 	ALogInit((char *)"./log.txt");
 	instance = MovieDLCreate();
@@ -58,7 +54,7 @@ int main()
 	M3u8DownloaderHook::MovieDLStart((CM3u8Download*)instance, true, false);
 	//MovieDLStart(instance, true, false);
 	do {
-		std::this_thread::sleep_for(chrono::milliseconds(2000));
+		Sleep(1000);
 
 		data = M3u8DownloaderHook::MovieDLGetState((CM3u8Download*)instance);
 

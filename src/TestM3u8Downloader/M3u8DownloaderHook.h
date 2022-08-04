@@ -13,7 +13,7 @@ public:
     }
 
         static void  MovieDLSetUrl(CM3u8Download* downloader, const char* url) {
-        if (downloader != nullptr) {
+        if (downloader != 0) {
             if (url != 0) {
                 if (downloader->url != 0) {
                     free(downloader->url);
@@ -25,7 +25,7 @@ public:
     }
 
     static void  MovieDLSetSavePath(CM3u8Download* downloader, const char* savePath) {
-        if (downloader != nullptr) {
+        if (downloader != 0) {
             assert(savePath != 0);
             if (downloader->savePath != 0) {
                 free(downloader->savePath);

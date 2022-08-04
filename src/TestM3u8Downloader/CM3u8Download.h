@@ -14,7 +14,7 @@ public:
 public:
 	void* vD0;
 	int vD8;
-	bool vDC = 1;
+	bool vDC;
 	CURL* pCurl; 
 	curl_slist * headerchain;
 };

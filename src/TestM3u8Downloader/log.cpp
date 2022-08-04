@@ -1,14 +1,13 @@
 #include <Windows.h>
+#include <iostream>
 #include "log.h"
 #include <sys/timeb.h>
 #include <time.h>
 
-
-
  FILE* Stream;
  PDWORD64 off_1800B2500 = (PDWORD64)0x1800B2500;
  DWORD dword_1800BBDC0 = 0;
- LogLevel g_format = LogLevel::Info;
+  LogLevel g_format =Info;
  guard CriticalSection;
  char OutputString[0x3E7F];
  char level[4][8] = { "ERROR","WARING","INFO","DEBUG"};

@@ -78,7 +78,7 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 		this->v68 = 0;
 		this->v78 = 0;
 		var_428 = 0;
-_beginthreadex(
+
 		this->threadResult = _beginthreadex(0, 0, (_beginthreadex_proc_type)StartAddress, this, 0, &var_428);
 		return !this->threadResult;
 	}

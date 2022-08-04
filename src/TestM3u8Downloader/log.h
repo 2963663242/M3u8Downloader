@@ -1,12 +1,6 @@
 #pragma once
-#include <cstdio>
 
-enum LogLevel {
-	Error,
-	Waring,
-	Info,
-	Debug
-};
+enum LogLevel;
 
 void LogD(int deLevel, const char* format, ...);
 void ALogInit(char* FileName);
@@ -24,4 +18,10 @@ public:
 	}
 public:
 	CRITICAL_SECTION cs;
+};
+enum LogLevel {
+	Error,
+	Waring,
+	Info,
+	Debug
 };

@@ -1,6 +1,6 @@
+#include "hook.h"
 #include "utils.h"
 #include <Dbghelp.h>
-#include "hook.hpp"
 #include "CMovieDownloadBase.h"
 #include <string>
 #include "log.h"
