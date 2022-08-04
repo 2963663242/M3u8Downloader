@@ -1,11 +1,13 @@
 #pragma once
 #include "utils.h"
 #include <process.h>
-#include <processenv.h>
-#include <errhandlingapi.h>
 #include <iostream>
 
+typedef  unsigned (__stdcall *_beginthreadex_proc_type) (void *);
+
 using namespace std;
+
+
 
 struct stateCallback;
 

@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <map>
-#include <thread>
 #include <Windows.h>
 #include "utils.h"
 #include "M3u8DownloaderHook.h"
@@ -18,9 +17,7 @@ void (*MovieDLStart)(ULONGLONG, bool, bool);
 const char* (*MovieDLGetState)(ULONGLONG);
 int main()
 {
-	regex str_expr("[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}");
-	std::vector<string> vec;
-	vec.push_back("[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}");
+	
 	HMODULE dllDownloader = LoadLibrary(TEXT("M3u8Downloader.dll"));
 	hookinit();
 

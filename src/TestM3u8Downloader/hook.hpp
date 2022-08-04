@@ -26,15 +26,15 @@ public:
 
         DWORD dwOldProtect;
         PBYTE pByte;
-        pByte = (PBYTE)pFunc;
-        if (pByte[0] != 0xE9)//若已脱钩，则返回False
+		pByte = (PBYTE)pFunc;
+		if (pByte[0] != 0xE9)//若已脱钩，则返回False
             return FALSE;
-        VirtualProtect((LPVOID)pFunc, 6, PAGE_EXECUTE_READWRITE, &dwOldProtect);//向内存添加“写”的属性，为恢复原代码做准备
-        memcpy(pFunc, pOrgBytes, 6);//脱钩
+		VirtualProtect((LPVOID)pFunc, 6, PAGE_EXECUTE_READWRITE, &dwOldProtect);//向内存添加“写”的属性，为恢复原代码做准备
+		memcpy(pFunc, pOrgBytes, 6);//脱钩
         VirtualProtect((LPVOID)pFunc, 6, dwOldProtect, &dwOldProtect);//恢复内存属性
         return TRUE;
     }
 public:
-    BYTE pOrgBytes[6] = {0,};
+	BYTE pOrgBytes[6] = {0,};
 	 FARPROC pFunc;
-};
+}
