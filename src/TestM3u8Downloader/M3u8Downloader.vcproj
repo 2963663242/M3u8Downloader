@@ -87,8 +87,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\..\build\bin\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(SolutionDir)..\..\build\obj\$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			>
 			<Tool
@@ -109,6 +109,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -123,6 +124,8 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="libcurl.lib"
 				AdditionalLibraryDirectories="&quot;$(SolutionDir)..\..\third\win\curl\lib\&quot;"
+				GenerateDebugInformation="true"
+				RandomizedBaseAddress="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -144,6 +147,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="xcopy $(SolutionDir)..\..\third\win\curl\bin\libcurl.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\M3u8Downloader\M3u8Downloader.dll $(OutDir) /Y /F"
 			/>
 		</Configuration>
 		<Configuration
@@ -299,6 +303,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\M3u8DownloaderHook.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -338,6 +346,10 @@
 			</File>
 			<File
 				RelativePath=".\log.h"
+				>
+			</File>
+			<File
+				RelativePath=".\M3u8DownloaderHook.h"
 				>
 			</File>
 			<File

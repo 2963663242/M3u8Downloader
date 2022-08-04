@@ -107,9 +107,9 @@ void CMovieDownloadBase::setCallbackState(stateCallback* stateInfo)
 	}
 	long long * p = (__int64*)&this->state;
 	
-	*p = 0;
+	//*p = 0;
 	this->state = state;
-	LogD(LogLevel::Info, "callback %s", state.c_str());
+	LogD(Info, "callback %s", state.c_str());
 	if (this->v10 != 0 && this->v78 == 0) {
 		this->v10((char *)state.c_str());
 	}

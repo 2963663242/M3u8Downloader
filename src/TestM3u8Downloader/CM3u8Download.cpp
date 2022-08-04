@@ -7,7 +7,7 @@ CM3u8Download::CM3u8Download()
 }
 void CM3u8Download::download()
 {
-	LogD(LogLevel::Info, "============================ %s ==> Start Download ============================", this->guid.data());
+	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.data());
 	string str1;
 	string str2;
 	string str3;
