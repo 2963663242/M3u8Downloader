@@ -24,4 +24,5 @@ curl_slist* headersAppend(curl_slist* headers, const char* cell);
 long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo);
 bool RegexExec(std::string const&, char const*, std::vector<std::vector<std::string>> &);
 //unsigned int StartAddress(void* downloader);
+bool  heapFreeHook();
 #endif

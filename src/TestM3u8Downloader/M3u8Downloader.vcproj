@@ -109,7 +109,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\regex\include\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				DebugInformationFormat="3"
 			/>
 			<Tool
