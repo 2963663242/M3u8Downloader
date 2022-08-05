@@ -1,0 +1,40 @@
+(0122-07-05 18:27:09)INFO: ============================ {ACD9093826E848F2A290AF0E1880D910} ==> Start Download ============================
+(0122-07-05 18:27:09)INFO: {ACD9093826E848F2A290AF0E1880D910} ==> connecting...
+(0122-07-05 18:27:09)INFO: callback {event=download_connecting
+(0122-07-05 18:27:09)INFO: {ACD9093826E848F2A290AF0E1880D910} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 18:27:39)INFO: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 19:43:08)INFO: {ACD9093826E848F2A290AF0E1880D910} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-05 19:46:21)INFO: ============================ {5DEA5283F9724DDF891F03F96A541D0D} ==> Start Download ============================
+(0122-07-05 19:46:21)INFO: {5DEA5283F9724DDF891F03F96A541D0D} ==> connecting...
+(0122-07-05 19:46:21)INFO: callback {event=download_connecting
+(0122-07-05 19:46:21)INFO: {5DEA5283F9724DDF891F03F96A541D0D} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 19:46:30)INFO: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 19:46:36)INFO: {5DEA5283F9724DDF891F03F96A541D0D} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-05 19:50:19)INFO: ============================ {43E9969811FD4DB3B80A110C04D5427A} ==> Start Download ============================
+(0122-07-05 19:50:19)INFO: {43E9969811FD4DB3B80A110C04D5427A} ==> connecting...
+(0122-07-05 19:50:19)INFO: callback {event=download_connecting
+(0122-07-05 19:50:19)INFO: {43E9969811FD4DB3B80A110C04D5427A} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 19:50:46)INFO: ============================ {FBE2F979F0DC43CD84B737A01A72011F} ==> Start Download ============================
+(0122-07-05 19:50:46)INFO: {FBE2F979F0DC43CD84B737A01A72011F} ==> connecting...
+(0122-07-05 19:50:46)INFO: callback {event=download_connecting
+(0122-07-05 19:50:46)INFO: {FBE2F979F0DC43CD84B737A01A72011F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 19:51:02)INFO: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 19:51:17)INFO: {FBE2F979F0DC43CD84B737A01A72011F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-05 19:56:59)INFO: ============================ {0C5FC09D64454EC0A5DF1B637176F116} ==> Start Download ============================
+(0122-07-05 19:56:59)INFO: {0C5FC09D64454EC0A5DF1B637176F116} ==> connecting...
+(0122-07-05 19:56:59)INFO: callback {event=download_connecting
+(0122-07-05 19:56:59)INFO: {0C5FC09D64454EC0A5DF1B637176F116} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 19:56:59)INFO: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 19:56:59)INFO: {0C5FC09D64454EC0A5DF1B637176F116} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-05 20:05:08)INFO: ============================ {037F071632A94630B00EB8E6D6CD9B8B} ==> Start Download ============================
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> connecting...
+(0122-07-05 20:05:08)INFO: callback {event=download_connecting
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-05 20:05:08)WARING: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-05 20:05:08)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-05 20:05:11)WARING: regex error : [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+(0122-07-05 20:05:11)INFO: {037F071632A94630B00EB8E6D6CD9B8B} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8

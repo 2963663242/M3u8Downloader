@@ -4,7 +4,7 @@
 #include "CMovieDownloadBase.h"
 #include <string>
 #include "log.h"
-
+#include "regex.h"
 
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
@@ -166,3 +166,12 @@ long lpTopLevelExceptionFilter(_EXCEPTION_POINTERS* ExceptionInfo)
 }
 
 
+bool RegexExec(std::string const& url, char const* rex, std::vector<std::vector<std::string>> & results){
+		
+	results = findAll(rex,url);
+	if(results.size()==0){
+		LogD(Info,"regex error : %s", rex);
+		return false;
+	}
+return true;
+}

@@ -108,7 +108,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\regex\include\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
+				RuntimeLibrary="2"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -122,8 +123,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcurl.lib"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)..\..\third\win\curl\lib\&quot;"
+				AdditionalDependencies="libcurl.lib findAll.lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)..\..\third\win\regex\lib\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\lib\&quot;"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
 			/>
@@ -147,7 +148,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy $(SolutionDir)..\..\third\win\curl\bin\libcurl.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\M3u8Downloader\M3u8Downloader.dll $(OutDir) /Y /F"
+				CommandLine="xcopy $(SolutionDir)..\..\third\win\curl\bin\libcurl.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\win\regex\bin\findAll.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\M3u8Downloader\M3u8Downloader.dll $(OutDir) /Y /F&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -354,6 +355,10 @@
 			</File>
 			<File
 				RelativePath=".\netlib.h"
+				>
+			</File>
+			<File
+				RelativePath=".\regex.h"
 				>
 			</File>
 			<File
