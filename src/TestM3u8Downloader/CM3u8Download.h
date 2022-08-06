@@ -11,6 +11,7 @@ class CM3u8Download: public CMovieDownloadBase
 public:
 	CM3u8Download();
 	void download();
+	CURLcode  downloadSegment(string& url,string * pCookie,string *pReceiveData);
 public:
 	void* vD0;
 	int vD8;

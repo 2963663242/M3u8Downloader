@@ -39,6 +39,7 @@ void inline hookinit() {
     
 
    hk.hook_by_code((FARPROC)0x000000018000B3F0, union_cast<PROC>(&CMovieDownloadBase::setCallbackState));
+   hk.hook_by_code((FARPROC)0x0000000180005B50, union_cast<PROC>(&CM3u8Download::downloadSegment));
 	hk.hook_by_code((FARPROC)0x000000018000B8C0, (PROC)RegexExec);
     /*void** start = (void**)0x00000001800A19A8;
     *start = (void*)a;*/
