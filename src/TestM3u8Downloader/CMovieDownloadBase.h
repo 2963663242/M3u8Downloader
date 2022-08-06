@@ -39,10 +39,10 @@ public:
 	int speedLimit;
 	bool flag1;
 	bool flag2;
-	long long int v68;
-	long long int v70;
+	long long int downloadedSize;
+	long long int totalSize;
 	 int v78;
-	 int v7C;
+	 int stateType;
 	 string guid;
 	 string state;
 };
@@ -52,8 +52,7 @@ extern _beginthreadex_proc_type  StartAddress;
 struct stateCallback
 {
 	int type;
-	int nkn_4;
-	__int64 nkn_8;
+	__int64 speed;
 	__int64 downloadingSize;
 	__int64 totalSize;
 };

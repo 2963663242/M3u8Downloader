@@ -15,7 +15,7 @@
 
  void ALogInit(char* FileName) {
 	 if (!Stream) {
-		 Block = new char[strlen(FileName)];
+		 Block = new char[strlen(FileName)+1];
 		 strcpy(Block, FileName);
 		 Stream = fopen(FileName, "a+");
 	 }
@@ -27,7 +27,7 @@
 	 if (Stream) {
 		 fclose(Stream);
 	 }
-	 free(Block);
+	 delete []Block;
 	 Stream = 0;
 }
  

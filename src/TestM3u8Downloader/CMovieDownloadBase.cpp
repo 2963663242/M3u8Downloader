@@ -47,10 +47,10 @@ CMovieDownloadBase* CMovieDownloadBase::CMovieDownloadBaseEx()
 	this->speedLimit = 0;
 	this->flag1 = 0;
 	this->flag2 = 0;
-	this->v68 = 0;
-	this->v70 = 0;
+	this->downloadedSize = 0;
+	this->totalSize = 0;
 	this->v78 = 0;
-	this->v7C = 0;
+	this->stateType = 0;
 	this->guid = "";
 	this->state = "";
 	
@@ -75,7 +75,7 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 	else {
 		this->flag1 = flag1;
 		this->flag2 = flag2;
-		this->v68 = 0;
+		this->downloadedSize = 0;
 		this->v78 = 0;
 		var_428 = 0;
 
@@ -102,7 +102,7 @@ void CMovieDownloadBase::setCallbackState(stateCallback* stateInfo)
 		sprintf(Buffer, "{event=downloading, totoalSize=%lld, downloadingSize=%lld, }", stateInfo->totalSize, stateInfo->downloadingSize);
 		state = Buffer;
 	}
-	else if (stateInfo->type == 4) {
+	else if (stateInfo->type == 5) {
 		state = "{event=download_complete}";
 	}
 	long long * p = (__int64*)&this->state;

@@ -67,14 +67,46 @@ __int64* sub_180009CC0() {
 	return arg_8;
 }
 
-void * write_callback=(void *)0x0000000180001F30;
-void * progress_callback = (void *)0x0000000180001DF0;
+//void *write_callback = (void *)0x0000000180001F30;
+size_t write_callback(char *ptr, size_t size, size_t nmemb,string * pReceiveData){
+	pReceiveData->append(ptr,nmemb);
+	return nmemb*size;
+}
+//void * progress_callback = (void *)0x0000000180001DF0;
+int progress_callback(CM3u8Download *downloader,
+					  double dltotal,
+					  double dlnow,
+					  double ultotal,
+					  double ulnow){
+						  double speed;
+						  time_t curtime;
+						  downloader->stateType = 3;
+						  curl_easy_getinfo(downloader->pCurl,CURLINFO_SPEED_DOWNLOAD,&speed);
+						  curtime = time(0);
+						  if(downloader->dlBody == true && curtime != downloader->time){
+							  stateCallback stateinfo;
+							  stateinfo.type = 3;
+							  stateinfo.speed = speed;
+							  stateinfo.downloadingSize = dlnow + downloader->downloadedSize;
+							  stateinfo.totalSize = downloader->totalSize;
+							  downloader->setCallbackState(&stateinfo);
+							  downloader->time = curtime;
+							  if(dlnow == downloader->dlnow){
+								  downloader->invalidDLCount++;
+							  }
+							  downloader->dlnow = dlnow;
 
+						  }
+
+						  if(downloader-> v78 !=0  && downloader->invalidDLCount > 0x3C)
+							  return 1;
+						  return 0;
+}
 CURLcode  CM3u8Download::downloadSegment(string& url,string * pCookie,string *pReceiveData){
 
 	CURLcode retCode;
 	CURL* pCurl = curl_easy_init();
-    this->pCurl = pCurl;
+	this->pCurl = pCurl;
 	struct curl_slist *pCookie_list = NULL;
 
 	LogD(Info,"%s ==> url : %s", this->guid.data(),url.data());
@@ -94,12 +126,12 @@ CURLcode  CM3u8Download::downloadSegment(string& url,string * pCookie,string *pR
 	}
 
 	if(pCookie->size()!=0){
-       LogD(Info,"%s ==> cookie : %s",this->guid.c_str(),pCookie->c_str());
+		LogD(Info,"%s ==> cookie : %s",this->guid.c_str(),pCookie->c_str());
 		curl_easy_setopt(pCurl,CURLOPT_COOKIE,pCookie->c_str());
 	}
-	
+
 	if(this->headerchain!=0){
-	 curl_easy_setopt(pCurl,CURLOPT_HTTPHEADER,this->headerchain);
+		curl_easy_setopt(pCurl,CURLOPT_HTTPHEADER,this->headerchain);
 	}
 	if(this->useragent !=0){
 		LogD(Info,"%s ==> user agent : %s",this->guid.c_str(),this->useragent);
@@ -140,7 +172,7 @@ CURLcode  CM3u8Download::downloadSegment(string& url,string * pCookie,string *pR
 					}
 
 				}
-				
+
 				cookies+=vecCookie[5];
 				cookies+="=";
 				cookies+=vecCookie[6];
@@ -150,8 +182,9 @@ CURLcode  CM3u8Download::downloadSegment(string& url,string * pCookie,string *pR
 			*pCookie=cookies;
 		}
 	}
+
 	curl_easy_cleanup(pCurl);
 
-return retCode;
+	return retCode;
 
 }

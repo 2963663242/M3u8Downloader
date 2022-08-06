@@ -9,7 +9,7 @@
 
 using namespace std;
 
-ULONGLONG (*MovieDLCreate)(void);
+CM3u8Download * (*MovieDLCreate)(void);
 void (*MovieDLSetUrl)(ULONGLONG, const char*);
 void (*MovieDLSetSavePath)(ULONGLONG, const char*);
 void (*MovieDLSetCookie)(ULONGLONG, const char*);
@@ -26,7 +26,7 @@ int main()
 
 	if (dllDownloader == NULL)
 		return -1;
-	MovieDLCreate = (ULONGLONG(*)(void))GetProcAddress(dllDownloader, "MovieDLCreate");
+	MovieDLCreate = (CM3u8Download *(*)(void))GetProcAddress(dllDownloader, "MovieDLCreate");
 	MovieDLSetUrl = (void (*)(ULONGLONG, const char*))GetProcAddress(dllDownloader, "MovieDLSetUrl");
 	MovieDLSetSavePath = (void (*)(ULONGLONG, const char*))GetProcAddress(dllDownloader, "MovieDLSetSavePath");
 	MovieDLSetCookie = (void (*)(ULONGLONG, const char*))GetProcAddress(dllDownloader, "MovieDLSetCookie");
@@ -34,8 +34,9 @@ int main()
 	MovieDLStart = (void (*)(ULONGLONG, bool, bool))GetProcAddress(dllDownloader, "MovieDLStart");
 	MovieDLGetState = (const char* (*)(ULONGLONG))GetProcAddress(dllDownloader, "MovieDLGetState");
 
-	ULONGLONG instance = 0;
-	const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+	CM3u8Download * instance = 0;
+	//const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+	const char * strUrl = "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8";
 	const char* strSavePath = "1.mp4";
 	const char* strCookie = "";
 	map<string, string> http_headers;
@@ -52,7 +53,8 @@ int main()
 	map<string, string>::iterator iter;
 	for (iter = http_headers.begin(); iter != http_headers.end(); iter++) {
 
-	M3u8DownloaderHook::MovieDLSetHeader((CM3u8Download*)instance, iter->first.c_str(), iter->second.c_str());
+		M3u8DownloaderHook::MovieDLSetHeader((CM3u8Download*)instance, iter->first.c_str(), iter->second.c_str());
+	
 	}
 
 	M3u8DownloaderHook::MovieDLStart((CM3u8Download*)instance, true, false);

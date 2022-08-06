@@ -13,9 +13,10 @@ public:
 	void download();
 	CURLcode  downloadSegment(string& url,string * pCookie,string *pReceiveData);
 public:
-	void* vD0;
-	int vD8;
-	bool vDC;
+	int time;
+	int dlnow;
+	int invalidDLCount;
+	bool dlBody;
 	CURL* pCurl; 
 	curl_slist * headerchain;
 };

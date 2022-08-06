@@ -109,7 +109,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\regex\include\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -148,7 +148,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy $(SolutionDir)..\..\third\win\curl\bin\libcurl.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\win\regex\bin\findAll.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\M3u8Downloader\M3u8Downloader.dll $(OutDir) /Y /F&#x0D;&#x0A;"
+				CommandLine="xcopy $(SolutionDir)..\..\third\win\curl\bin\libcurl.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\win\curl\bin\zlib1.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\win\regex\bin\findAll.dll $(OutDir) /Y /F&#x0D;&#x0A;xcopy $(SolutionDir)..\..\third\M3u8Downloader\M3u8Downloader.dll $(OutDir) /Y /F&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -304,18 +304,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\M3u8DownloaderHook.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\netlib.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\utils.cpp"
 				>
 			</File>
@@ -334,10 +322,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\hook.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\hook.h"
 				>
 			</File>
@@ -351,10 +335,6 @@
 			</File>
 			<File
 				RelativePath=".\M3u8DownloaderHook.h"
-				>
-			</File>
-			<File
-				RelativePath=".\netlib.h"
 				>
 			</File>
 			<File
