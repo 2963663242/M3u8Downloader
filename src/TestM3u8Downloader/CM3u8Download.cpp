@@ -2,51 +2,81 @@
 #include "utils.h"
 #include "log.h"
 
+
 CM3u8Download::CM3u8Download()
 {
 	curl_global_init(CURL_GLOBAL_ALL); 
 }
 void CM3u8Download::download()
 {
-	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.data());
-	string str1;
-	string str2;
-	string str3;
+	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.c_str());
 
-	long long var_790 = 0;
-	long var_7D4 = 0;
-	long var_7D0 = 0;
+	string url;
+	string cookies;
+	string receiveData;
+	string strLastCookies;
+	std::vector<std::vector<std::string>> regexResult;
 
-	long long* var_668;
-	if (var_668 = new __int64) {
-		*var_668 = (long long)&var_668;
+	this->invalidDLCount = 0;
+	 CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
+	 if(this->savePath == 0 || this->url == 0)
+		 return;
+	url = this->url;
+	if(this->strCookie!=0)
+		cookies = this->strCookie;
+	
+	stateCallback stateinfo = {0};
+	stateinfo.type = 2;
+	this->stateType = 2;
+
+	LogD(Info,"%s ==> connecting...",this->guid.c_str());
+
+	this->setCallbackState(&stateinfo);
+	
+	while(true){
+		receiveData = "";
+		this->invalidDLCount = 0;
+		if(strLastCookies.size() != 0)
+			cookies = strLastCookies;
+		this->dlBody = false;
+		if(this->v78 == 0)
+			dlProfileRet = this->downloadSegment(url,&cookies,&receiveData);
+		
+		 this->dlBody = true;
+		if(strLastCookies.size() == 0)
+			strLastCookies = cookies;
+
+		if(dlProfileRet){
+			stateinfo.type = 1;
+			stateinfo.speed = dlProfileRet;
+			this->setCallbackState(&stateinfo);
+			return;
+		}
+		
+		RegexExec(receiveData,"([^\n\r]+)",regexResult);
+
+		int index =0;
+		int index2 = 0;
+
+		if(regexResult.size() == 0 ){
+			stateinfo.type = 1;
+			stateinfo.speed = dlProfileRet;
+			this->setCallbackState(&stateinfo);
+			return;
+		}
+
+		do{
+			if(index2 >= regexResult.size())
+				exit(1);
+
+			if(regexResult[index2].size() <= 1)
+				exit(1);
+
+			string strItem = regexResult[index2][0];
+	
+		}while(index < regexResult.size());
+
 	}
-	else {
-		var_668 = 0;
-	}
-	__int64 * var_638 = sub_180009CC0();
-	*((char*)var_638 + 0x69) = 1;
-	var_638[1] = (__int64)var_638;
-	var_638[0] = (__int64)var_638;
-	var_638[2] = (__int64)var_638;
-	__int64* var_630 = 0;
-
-	string str_4E8;
-	string str_388;
-	string str_338;
-	string str_360;
-	string str_3D8;
-	string str_428;
-	string str_498;
-
-	long long* var_6E8;
-	if (var_6E8 = new __int64) {
-		*var_6E8 = (long long)&var_6E8;
-	}
-	else {
-		var_6E8 = 0;
-	}
-
 
 }
 

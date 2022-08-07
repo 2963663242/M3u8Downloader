@@ -34,6 +34,7 @@ void inline hookinit() {
  //   
 
    hk.hook_by_code((FARPROC)0x000000018000B3F0, union_cast<PROC>(&CMovieDownloadBase::setCallbackState));
+   hk.hook_by_code((FARPROC)0x0000000180001F70, union_cast<PROC>(&CM3u8Download::download));
    hk.hook_by_code((FARPROC)0x0000000180005B50, union_cast<PROC>(&CM3u8Download::downloadSegment));
 	hk.hook_by_code((FARPROC)0x000000018000B8C0, (PROC)RegexExec);
    

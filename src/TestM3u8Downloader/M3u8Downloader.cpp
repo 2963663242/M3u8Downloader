@@ -35,8 +35,9 @@ int main()
 	MovieDLGetState = (const char* (*)(ULONGLONG))GetProcAddress(dllDownloader, "MovieDLGetState");
 
 	CM3u8Download * instance = 0;
-	//const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
-	const char * strUrl = "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8";
+	const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+	//const char * strUrl = "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8";
+	//const char * strUrl = "https://vkceu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e5466275.m3u8"; //error url
 	const char* strSavePath = "1.mp4";
 	const char* strCookie = "";
 	map<string, string> http_headers;
@@ -64,7 +65,7 @@ int main()
 
 		data = M3u8DownloaderHook::MovieDLGetState((CM3u8Download*)instance);
 
-	} while (!strstr(data, "download_complete"));
+	} while (!strstr(data, "download_complete") && !strstr(data, "{event=download_error}"));
 
 	ALogFree();
 	return 0;
