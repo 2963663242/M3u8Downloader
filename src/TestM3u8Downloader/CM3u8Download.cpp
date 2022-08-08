@@ -85,37 +85,54 @@ void CM3u8Download::download()
 			return;
 		}
 		
+		
 
 		do{
-			if(index2 >= regexResult.size())
-				exit(1);
-
-			if(regexResult[index2].size() <= 1)
-				exit(1);
-
+			std::vector<std::vector<std::string>> regexEXTINF;
 			string strItem = regexResult[index2][0];
+
 			if(strItem.size() != 0){
 				if( strItem.size() >= 17){
-					if(strstr(strItem.c_str()(),"#EXT-X-STREAM-INF")!=0 && strItem.rfind("#EXT-X-STREAM-INF",0)==0){
-								findEXT_X_STREAM =1;
-								LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());	
+					if(strstr(strItem.c_str(),"#EXT-X-STREAM-INF")!=0 && strItem.rfind("#EXT-X-STREAM-INF",0)==0){
+						findEXT_X_STREAM =1;
+						LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());	
 					}
 				}
-				 if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"METHOD=AES-128") !=0 && strstr(strItem.c_str(),"METHOD=AES-128") !=strItem.c_str()){
-					
-					
+				if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"#EXT-X-KEY:") !=0){
+					// 0x00000001800027B5
+
 
 
 				}
+			}
 
-
+			if(strItem.find("#EXTINF:") == 0 && RegexExec(strItem,"#EXTINF:([0-9\\.]+)",regexEXTINF)){
+				// 0x00000001800031DF
 
 
 			}
 
+			if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
+				 if(strItem.find("#") != 0){
+					// 0x00000001800032D2
 
+				 }
+				 index++;
+				index2++;
+				continue;
+			}
+			bool find_resolution = strItem.find("RESOLUTION")!= string::npos?1:0;
 
+			std::vector<std::vector<std::string>> regexBANDWIDTH;
 
+			if(find_resolution){
+				// 0x000000018000385A
+			}
+
+			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
+				// 0x000000018000398A   now
+			}
+			
 		}while(index < regexResult.size());
 
 	}

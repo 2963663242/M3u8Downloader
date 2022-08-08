@@ -2656,3 +2656,61 @@
 (0122-07-08 17:47:34)INFO: {1A22562A99BA4E939D06B473EC5668F2} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence16.ts
 (0122-07-08 17:47:35)INFO: callback {event=downloading, totoalSize=171623458, downloadingSize=15247871, }
 (0122-07-08 17:47:35)INFO: callback {event=download_error}
+(0122-07-08 22:33:28)INFO: ============================ {E2BC9EFA387E426E93C5ED673A35EC42} ==> Start Download ============================
+(0122-07-08 22:33:28)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> connecting...
+(0122-07-08 22:33:28)INFO: callback {event=download_connecting
+(0122-07-08 22:33:28)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-08 22:33:29)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-08 22:33:48)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-08 22:33:48)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-08 22:33:48)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-08 22:33:48)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-08 22:33:48)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-08 22:33:49)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-08 22:33:49)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-08 22:33:51)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-08 22:33:51)INFO: {E2BC9EFA387E426E93C5ED673A35EC42} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence16.ts
+(0122-07-08 22:33:51)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15246972, }
+(0122-07-08 22:33:52)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15252295, }
+(0122-07-08 22:33:53)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15253695, }
+(0122-07-08 22:33:54)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15292895, }
+(0122-07-08 22:33:55)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15292895, }
+(0122-07-09 00:38:57)INFO: ============================ {B25E5C598B3C46EE88287327F3AF5F6F} ==> Start Download ============================
+(0122-07-09 00:38:57)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> connecting...
+(0122-07-09 00:38:57)INFO: callback {event=download_connecting
+(0122-07-09 00:38:57)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-09 00:38:58)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:38:58)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-09 00:38:58)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-09 00:38:58)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-09 00:38:58)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-09 00:38:58)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-09 00:38:59)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:38:59)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-09 00:38:59)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:38:59)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence16.ts
+(0122-07-09 00:38:59)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15246972, }
+(0122-07-09 00:39:00)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15246972, }
+(0122-07-09 00:39:01)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15260964, }
+(0122-07-09 00:39:02)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=15512092, }
+(0122-07-09 00:39:03)INFO: callback {event=downloading, totoalSize=171623728, downloadingSize=16074701, }
+(0122-07-09 00:39:03)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:39:03)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence17.ts
+(0122-07-09 00:39:04)INFO: callback {event=downloading, totoalSize=171707763, downloadingSize=16219040, }
+(0122-07-09 00:39:05)INFO: callback {event=downloading, totoalSize=171707763, downloadingSize=16432955, }
+(0122-07-09 00:39:05)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:39:05)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence18.ts
+(0122-07-09 00:39:06)INFO: callback {event=downloading, totoalSize=171806915, downloadingSize=17171152, }
+(0122-07-09 00:39:07)INFO: callback {event=downloading, totoalSize=171806915, downloadingSize=17178152, }
+(0122-07-09 00:39:08)INFO: callback {event=downloading, totoalSize=171806915, downloadingSize=17615936, }
+(0122-07-09 00:39:08)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 00:39:08)INFO: {B25E5C598B3C46EE88287327F3AF5F6F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence19.ts
+(0122-07-09 00:39:09)INFO: callback {event=downloading, totoalSize=171904540, downloadingSize=18135404, }
+(0122-07-09 00:39:10)INFO: callback {event=downloading, totoalSize=171904540, downloadingSize=18149400, }
+(0122-07-09 00:39:11)INFO: callback {event=downloading, totoalSize=171904540, downloadingSize=18491704, }
+(0122-07-09 01:31:28)INFO: ============================ {E6F4F58E6D274BEF8F26031F9AFF887F} ==> Start Download ============================
+(0122-07-09 01:31:28)INFO: {E6F4F58E6D274BEF8F26031F9AFF887F} ==> connecting...
+(0122-07-09 01:31:28)INFO: callback {event=download_connecting
+(0122-07-09 01:31:28)INFO: {E6F4F58E6D274BEF8F26031F9AFF887F} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-09 01:31:29)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-09 02:13:43)INFO: {E6F4F58E6D274BEF8F26031F9AFF887F} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000

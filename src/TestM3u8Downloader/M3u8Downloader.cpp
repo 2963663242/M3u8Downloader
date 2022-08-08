@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "M3u8DownloaderHook.h"
 #include "hookmiddle.h"
-
+#include<string>
 
 using namespace std;
 
@@ -18,9 +18,6 @@ void (*MovieDLStart)(ULONGLONG, bool, bool);
 const char* (*MovieDLGetState)(ULONGLONG);
 int main()
 {
-
-
-	
 	HMODULE dllDownloader = LoadLibrary(TEXT("M3u8Downloader.dll"));
 	hookinit();
 
