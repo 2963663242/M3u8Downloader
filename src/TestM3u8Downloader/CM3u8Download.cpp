@@ -7,15 +7,35 @@ CM3u8Download::CM3u8Download()
 {
 	curl_global_init(CURL_GLOBAL_ALL); 
 }
+
+
+//int maxCount = strItem.size()-16;
+//char * assiiTtem = (char *)strItem.c_str();
+//char * pPos;
+//while((pPos = (char *)memchr((void *)assiiTtem,(int)'#',(size_t)maxCount))!=0)
+//{
+//
+//	if((std::string(pPos)).rfind("#EXT-X-STREAM-INF",0)==0){
+//		findEXT_X_STREAM =1;
+//		LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());
+//		break;
+//	}
+//
+//	maxCount += assiiTtem - pPos -1;
+//	assiiTtem = pPos +1;
+//
+//}
 void CM3u8Download::download()
 {
 	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.c_str());
-
+	
+	string subUrl;
 	string url;
 	string cookies;
 	string receiveData;
 	string strLastCookies;
 	std::vector<std::vector<std::string>> regexResult;
+	int findEXT_X_STREAM = 0;
 
 	this->invalidDLCount = 0;
 	 CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
@@ -64,6 +84,7 @@ void CM3u8Download::download()
 			this->setCallbackState(&stateinfo);
 			return;
 		}
+		
 
 		do{
 			if(index2 >= regexResult.size())
@@ -73,7 +94,28 @@ void CM3u8Download::download()
 				exit(1);
 
 			string strItem = regexResult[index2][0];
-	
+			if(strItem.size() != 0){
+				if( strItem.size() >= 17){
+					if(strstr(strItem.c_str()(),"#EXT-X-STREAM-INF")!=0 && strItem.rfind("#EXT-X-STREAM-INF",0)==0){
+								findEXT_X_STREAM =1;
+								LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());	
+					}
+				}
+				 if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"METHOD=AES-128") !=0 && strstr(strItem.c_str(),"METHOD=AES-128") !=strItem.c_str()){
+					
+					
+
+
+				}
+
+
+
+
+			}
+
+
+
+
 		}while(index < regexResult.size());
 
 	}
