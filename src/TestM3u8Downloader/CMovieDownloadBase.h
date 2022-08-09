@@ -28,7 +28,7 @@ public:
 	uintptr_t threadResult; //8
 	void  (*v10)(char *);  //10
 	long long int v18;   //18
-	char * dsSavePath;
+	char * dsSavePath; //20
 	char * savePath;
 	char * infoSavePath;
 	char * url;

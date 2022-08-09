@@ -35,7 +35,11 @@ void CM3u8Download::download()
 	string cookies;
 	string receiveData;
 	string strLastCookies;
+	string strIV;
+	string videoData;
 	std::vector<std::vector<std::string>> regexResult;
+	std::vector<std::pair<int,std::string>> tsPairSet;
+	std::vector<std::pair<std::string,std::string>> IVPairSet;
 	bool findEXT_X_STREAM = 0;
 	int RESOLUTION = 0;
 	int BANDWIDTH = 0;
@@ -44,6 +48,7 @@ void CM3u8Download::download()
 	int bandWidth_url_index = 0;
 	bool find_resolution = 0;
 	int EXTINF_value = 0;
+	long long totalEXTINF = 0;
 
 
 	this->invalidDLCount = 0;
@@ -108,7 +113,7 @@ void CM3u8Download::download()
 					}
 				}
 				if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"#EXT-X-KEY:") !=0){
-					// 0x00000001800027B5
+					// 00000001800027B5
 
 
 
@@ -134,7 +139,12 @@ void CM3u8Download::download()
 						 string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
 						 strItem = strUrlPath + std::string("/") + strItem;
 					 }
-
+					
+					 tsPairSet.push_back(std::make_pair(EXTINF_value,strItem));
+					 IVPairSet.push_back(std::make_pair(strIV,videoData));
+					 
+					 totalEXTINF+=EXTINF_value;
+					 EXTINF = false;
 				 }
 				 index++;
 				index2++;
@@ -145,7 +155,7 @@ void CM3u8Download::download()
 			std::vector<std::vector<std::string>> regexBANDWIDTH;
 
 			if(find_resolution){
-				// 0x000000018000385A
+				// 000000018000385A
 			}
 
 			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
@@ -159,8 +169,8 @@ void CM3u8Download::download()
 		}while(index < regexResult.size());
 		
 		if(findEXT_X_STREAM==0){
-			// 0000000180004223
-
+			// 0x0000000180004223
+			break;
 		}
 		string strLastCookies2 = strLastCookies;
 		findEXT_X_STREAM =0;
@@ -189,6 +199,31 @@ void CM3u8Download::download()
 		this->dlBody=1;
 		url = strItem;
 
+	}
+	if(tsPairSet.size() == 0){
+		stateinfo.type = 1;
+		stateinfo.speed = dlProfileRet;
+		this->setCallbackState(&stateinfo);
+		return;
+	}
+	FILE * file = fopen(this->dsSavePath,"a+b");
+	if(file == 0){
+		// 0000000180004287
+	}
+	if(this->flag1){
+		fseek(file,0,2);
+		int fpos = ftell(file);
+		if( fpos > 24 ){
+			// 0000000180004591
+			printf("hello");
+		}
+		
+	}
+	fseek(file,0,0);
+	this->totalSize = totalEXTINF * 500 / 8;
+	this->time = 0;
+	if(tsPairSet.size() > 0){
+		// 0000000180004700 now
 	}
 
 }
