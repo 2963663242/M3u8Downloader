@@ -1,7 +1,8 @@
 #include "CM3u8Download.h"
+#include <string>
 #include "utils.h"
 #include "log.h"
-#include <string.h>
+
 
 CM3u8Download::CM3u8Download()
 {
@@ -42,6 +43,9 @@ void CM3u8Download::download()
 	int resolution_url_index = 0;
 	int bandWidth_url_index = 0;
 	bool find_resolution = 0;
+	int EXTINF_value = 0;
+
+
 	this->invalidDLCount = 0;
 	 CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
 	 if(this->savePath == 0 || this->url == 0)
@@ -113,13 +117,24 @@ void CM3u8Download::download()
 
 			if(strItem.find("#EXTINF:") == 0 && RegexExec(strItem,"#EXTINF:([0-9\\.]+)",regexEXTINF)){
 				EXTINF = 1;
-				// 00000001800031E4
 
+				EXTINF_value = atof(regexEXTINF[0][1].c_str()) * 1000;
+				index++;
+				index2++;
+				continue;
 			}
-
-			if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
+			else if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
 				 if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
-					// 00000001800032E8
+					 if( strItem.c_str()[0] == '/'){
+						//000000018000331B
+
+					 }
+					 else if(strItem.find("http")!=0){
+						 string strUrl = url;
+						 string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
+						 strItem = strUrlPath + std::string("/") + strItem;
+					 }
+
 				 }
 				 index++;
 				index2++;
@@ -142,6 +157,7 @@ void CM3u8Download::download()
 			index++;
 			index2++;
 		}while(index < regexResult.size());
+		
 		if(findEXT_X_STREAM==0){
 			// 0000000180004223
 
@@ -153,6 +169,7 @@ void CM3u8Download::download()
 			strItem = regexResult[resolution_url_index][1];
 		else
 			strItem = regexResult[bandWidth_url_index][1];
+		
 		if(strItem.c_str()[0] == '/'){
 			string url_5E0 = url;
 			// 0000000180003D75
@@ -162,11 +179,15 @@ void CM3u8Download::download()
 		 else if(strItem.find("http")!=0){
 			 string strUrl = url;
 			strUrl.find_last_of("/");
-			string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")+1) ;
-			
-			// 0000000180003F55 now
-
+			string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
+			strItem = strUrlPath + std::string("/") + strItem;
 		}
+
+		 this->dlBody = 0;
+		if(this->v78 || this->downloadSegment(strItem,&strLastCookies2,&receiveData)!=0)
+			break;
+		this->dlBody=1;
+		url = strItem;
 
 	}
 

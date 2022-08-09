@@ -25,26 +25,26 @@ public:
 
 public:
 	//void *vft;
-	uintptr_t threadResult;
-	void  (*v10)(char *);
-	long long int v18;
+	uintptr_t threadResult; //8
+	void  (*v10)(char *);  //10
+	long long int v18;   //18
 	char * dsSavePath;
 	char * savePath;
 	char * infoSavePath;
 	char * url;
-	char * strCookie;
-	long long int v48;
+	char * strCookie;//40
+	long long int v48; 
 	char * useragent;
 	long long int v58;
-	int speedLimit;
-	bool flag1;
-	bool flag2;
-	long long int downloadedSize;
-	long long int totalSize;
-	 int v78;
+	int speedLimit; 
+	bool flag1;  //64
+	bool flag2;  //65
+	long long int downloadedSize; //68
+	long long int totalSize; //70
+	 int v78; 
 	 int stateType;
-	 string guid;
-	 string state;
+	 string guid; //80
+	 string state; //A8
 };
 
 extern _beginthreadex_proc_type  StartAddress;
