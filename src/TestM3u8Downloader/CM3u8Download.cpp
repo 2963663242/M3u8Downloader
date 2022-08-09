@@ -1,7 +1,7 @@
 #include "CM3u8Download.h"
 #include "utils.h"
 #include "log.h"
-
+#include <string.h>
 
 CM3u8Download::CM3u8Download()
 {
@@ -35,8 +35,13 @@ void CM3u8Download::download()
 	string receiveData;
 	string strLastCookies;
 	std::vector<std::vector<std::string>> regexResult;
-	int findEXT_X_STREAM = 0;
-
+	bool findEXT_X_STREAM = 0;
+	int RESOLUTION = 0;
+	int BANDWIDTH = 0;
+	bool EXTINF = 0;
+	int resolution_url_index = 0;
+	int bandWidth_url_index = 0;
+	bool find_resolution = 0;
 	this->invalidDLCount = 0;
 	 CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
 	 if(this->savePath == 0 || this->url == 0)
@@ -107,21 +112,20 @@ void CM3u8Download::download()
 			}
 
 			if(strItem.find("#EXTINF:") == 0 && RegexExec(strItem,"#EXTINF:([0-9\\.]+)",regexEXTINF)){
-				// 0x00000001800031DF
-
+				EXTINF = 1;
+				// 00000001800031E4
 
 			}
 
 			if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
-				 if(strItem.find("#") != 0){
-					// 0x00000001800032D2
-
+				 if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
+					// 00000001800032E8
 				 }
 				 index++;
 				index2++;
 				continue;
 			}
-			bool find_resolution = strItem.find("RESOLUTION")!= string::npos?1:0;
+			find_resolution = strItem.find("RESOLUTION")!= string::npos?1:0;
 
 			std::vector<std::vector<std::string>> regexBANDWIDTH;
 
@@ -130,10 +134,39 @@ void CM3u8Download::download()
 			}
 
 			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
-				// 0x000000018000398A   now
+				if(BANDWIDTH < atoi(regexBANDWIDTH[0][1].c_str())){
+					BANDWIDTH = atoi(regexBANDWIDTH[0][1].c_str());
+					 bandWidth_url_index = index +1;
+				}
 			}
-			
+			index++;
+			index2++;
 		}while(index < regexResult.size());
+		if(findEXT_X_STREAM==0){
+			// 0000000180004223
+
+		}
+		string strLastCookies2 = strLastCookies;
+		findEXT_X_STREAM =0;
+		string strItem = "";
+		if( find_resolution)
+			strItem = regexResult[resolution_url_index][1];
+		else
+			strItem = regexResult[bandWidth_url_index][1];
+		if(strItem.c_str()[0] == '/'){
+			string url_5E0 = url;
+			// 0000000180003D75
+
+
+		}
+		 else if(strItem.find("http")!=0){
+			 string strUrl = url;
+			strUrl.find_last_of("/");
+			string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")+1) ;
+			
+			// 0000000180003F55 now
+
+		}
 
 	}
 
