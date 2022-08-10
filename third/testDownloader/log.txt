@@ -2944,3 +2944,187 @@
 (0122-07-10 20:48:18)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=336912, }
 (0122-07-10 20:48:19)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=602034, }
 (0122-07-10 20:48:19)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-10 23:30:54)INFO: ============================ {32598DF005B247019BC90C3600BB0CC1} ==> Start Download ============================
+(0122-07-10 23:30:54)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> connecting...
+(0122-07-10 23:30:54)INFO: callback {event=download_connecting
+(0122-07-10 23:30:54)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-10 23:30:55)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-10 23:30:55)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-10 23:30:55)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-10 23:30:55)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-10 23:30:55)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-10 23:30:55)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-10 23:30:56)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-10 23:30:56)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-10 23:30:56)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-10 23:30:56)INFO: {32598DF005B247019BC90C3600BB0CC1} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence0.ts
+(0122-07-10 23:30:56)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:30:57)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:30:58)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:30:59)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:00)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:01)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:02)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:04)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:05)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:06)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:07)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:08)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:09)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:10)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:11)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:12)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:13)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:14)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:15)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:16)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:17)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:18)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-10 23:31:19)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=17923, }
+(0122-07-10 23:31:20)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=95168, }
+(0122-07-10 23:31:21)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=215984, }
+(0122-07-10 23:31:22)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=232368, }
+(0122-07-10 23:31:23)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=355984, }
+(0122-07-10 23:31:24)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=403168, }
+(0122-07-10 23:31:25)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=470368, }
+(0122-07-10 23:31:26)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=516568, }
+(0122-07-10 23:31:27)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=547784, }
+(0122-07-10 23:31:28)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=628984, }
+(0122-07-10 23:31:29)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=674768, }
+(0122-07-10 23:31:30)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=726984, }
+(0122-07-10 23:31:31)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=792368, }
+(0122-07-10 23:31:32)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=833384, }
+(0122-07-10 23:31:33)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=893584, }
+(0122-07-10 23:31:33)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:27:55)INFO: ============================ {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> Start Download ============================
+(0122-07-11 00:27:55)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> connecting...
+(0122-07-11 00:27:55)INFO: callback {event=download_connecting
+(0122-07-11 00:27:55)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-11 00:27:59)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:27:59)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-11 00:27:59)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-11 00:27:59)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-11 00:27:59)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-11 00:27:59)INFO: {F3FDF80937CE4F3EAF143D6CF1F569D7} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:29:20)INFO: ============================ {9BCF3625230041AEA5EF7E5A17F15336} ==> Start Download ============================
+(0122-07-11 00:29:20)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> connecting...
+(0122-07-11 00:29:20)INFO: callback {event=download_connecting
+(0122-07-11 00:29:20)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-11 00:29:59)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:29:59)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-11 00:29:59)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-11 00:29:59)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-11 00:29:59)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-11 00:29:59)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:30:01)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:30:01)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:30:03)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:30:03)INFO: {9BCF3625230041AEA5EF7E5A17F15336} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence0.ts
+(0122-07-11 00:30:03)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-11 00:30:04)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-11 00:30:05)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-11 00:30:06)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=110984, }
+(0122-07-11 00:30:07)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=183368, }
+(0122-07-11 00:30:08)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=278984, }
+(0122-07-11 00:30:09)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=435768, }
+(0122-07-11 00:30:10)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=481984, }
+(0122-07-11 00:30:11)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=593984, }
+(0122-07-11 00:30:12)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=632768, }
+(0122-07-11 00:30:13)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=702768, }
+(0122-07-11 00:30:14)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=777384, }
+(0122-07-11 00:30:15)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=852568, }
+(0122-07-11 00:30:16)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=895968, }
+(0122-07-11 00:30:16)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:42:09)INFO: ============================ {A9280A204FEA451A9399B12E17B12364} ==> Start Download ============================
+(0122-07-11 00:42:09)INFO: {A9280A204FEA451A9399B12E17B12364} ==> connecting...
+(0122-07-11 00:42:09)INFO: callback {event=download_connecting
+(0122-07-11 00:42:09)INFO: {A9280A204FEA451A9399B12E17B12364} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-11 00:42:10)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:42:10)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:42:10)INFO: {A9280A204FEA451A9399B12E17B12364} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:42:12)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:42:12)INFO: {A9280A204FEA451A9399B12E17B12364} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence1.ts
+(0122-07-11 00:42:12)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=923080, }
+(0122-07-11 00:42:13)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=923080, }
+(0122-07-11 00:42:14)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=962987, }
+(0122-07-11 00:42:15)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1136587, }
+(0122-07-11 00:42:16)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1224787, }
+(0122-07-11 00:42:17)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1334403, }
+(0122-07-11 00:42:18)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1420787, }
+(0122-07-11 00:42:19)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1529971, }
+(0122-07-11 00:42:20)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1612587, }
+(0122-07-11 00:42:21)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1667187, }
+(0122-07-11 00:42:22)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1749787, }
+(0122-07-11 00:42:23)INFO: callback {event=downloading, totoalSize=166246708, downloadingSize=1860387, }
+(0122-07-11 00:42:23)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:58:58)INFO: ============================ {C0CA66CB5E664666929127D37376F9DD} ==> Start Download ============================
+(0122-07-11 00:58:58)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> connecting...
+(0122-07-11 00:58:58)INFO: callback {event=download_connecting
+(0122-07-11 00:58:58)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> url : http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+(0122-07-11 00:58:59)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:58:59)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+(0122-07-11 00:58:59)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+(0122-07-11 00:58:59)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+(0122-07-11 00:58:59)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+(0122-07-11 00:58:59)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:59:02)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:59:02)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8
+(0122-07-11 00:59:13)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}
+(0122-07-11 00:59:14)INFO: {C0CA66CB5E664666929127D37376F9DD} ==> url : http://devimages.apple.com/iphone/samples/bipbop/gear4/fileSequence0.ts
+(0122-07-11 00:59:14)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=0, }
+(0122-07-11 00:59:15)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=5323, }
+(0122-07-11 00:59:16)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=8123, }
+(0122-07-11 00:59:17)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=15123, }
+(0122-07-11 00:59:18)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=31507, }
+(0122-07-11 00:59:19)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=143907, }
+(0122-07-11 00:59:20)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=186891, }
+(0122-07-11 00:59:21)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=246368, }
+(0122-07-11 00:59:22)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=269184, }
+(0122-07-11 00:59:23)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=320984, }
+(0122-07-11 00:59:25)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=322384, }
+(0122-07-11 00:59:26)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=367184, }
+(0122-07-11 00:59:27)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=418984, }
+(0122-07-11 00:59:28)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=444184, }
+(0122-07-11 00:59:29)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=469384, }
+(0122-07-11 00:59:30)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=494584, }
+(0122-07-11 00:59:31)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=494584, }
+(0122-07-11 00:59:32)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=494584, }
+(0122-07-11 00:59:33)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=572568, }
+(0122-07-11 00:59:34)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=599584, }
+(0122-07-11 00:59:35)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=616384, }
+(0122-07-11 00:59:36)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=635984, }
+(0122-07-11 00:59:37)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=648584, }
+(0122-07-11 00:59:38)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=648584, }
+(0122-07-11 00:59:39)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=648584, }
+(0122-07-11 00:59:40)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=659592, }
+(0122-07-11 00:59:41)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=674472, }
+(0122-07-11 00:59:42)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=700520, }
+(0122-07-11 00:59:43)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=702256, }
+(0122-07-11 00:59:44)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=711008, }
+(0122-07-11 00:59:45)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=711008, }
+(0122-07-11 00:59:46)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=732752, }
+(0122-07-11 00:59:47)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=747248, }
+(0122-07-11 00:59:48)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=754496, }
+(0122-07-11 00:59:49)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=762952, }
+(0122-07-11 00:59:50)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=781448, }
+(0122-07-11 00:59:51)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=787488, }
+(0122-07-11 00:59:52)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=797152, }
+(0122-07-11 00:59:53)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=804400, }
+(0122-07-11 00:59:54)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=818896, }
+(0122-07-11 00:59:55)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=821312, }
+(0122-07-11 00:59:56)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=839808, }
+(0122-07-11 00:59:57)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=850680, }
+(0122-07-11 00:59:58)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=855512, }
+(0122-07-11 00:59:59)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=857928, }
+(0122-07-11 01:00:00)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=877256, }
+(0122-07-11 01:00:01)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=879672, }
+(0122-07-11 01:00:02)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=888128, }
+(0122-07-11 01:00:03)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=900208, }
+(0122-07-11 01:00:04)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=912664, }
+(0122-07-11 01:00:05)INFO: callback {event=downloading, totoalSize=112562500, downloadingSize=913872, }
+(0122-07-11 01:00:05)INFO: regex error : [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}

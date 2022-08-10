@@ -29,7 +29,7 @@ CM3u8Download::CM3u8Download()
 void CM3u8Download::download()
 {
 	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.c_str());
-	
+
 	string subUrl;
 	string url;
 	string cookies;
@@ -49,16 +49,17 @@ void CM3u8Download::download()
 	bool find_resolution = 0;
 	int EXTINF_value = 0;
 	long long totalEXTINF = 0;
+	int acumExtInfo = 0;
 
 
 	this->invalidDLCount = 0;
-	 CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
-	 if(this->savePath == 0 || this->url == 0)
-		 return;
+	CURLcode dlProfileRet = CURLE_UNSUPPORTED_PROTOCOL;
+	if(this->savePath == 0 || this->url == 0)
+		return;
 	url = this->url;
 	if(this->strCookie!=0)
 		cookies = this->strCookie;
-	
+
 	stateCallback stateinfo = {0};
 	stateinfo.type = 2;
 	this->stateType = 2;
@@ -66,7 +67,7 @@ void CM3u8Download::download()
 	LogD(Info,"%s ==> connecting...",this->guid.c_str());
 
 	this->setCallbackState(&stateinfo);
-	
+
 	while(true){
 		receiveData = "";
 		this->invalidDLCount = 0;
@@ -75,8 +76,8 @@ void CM3u8Download::download()
 		this->dlBody = false;
 		if(this->v78 == 0)
 			dlProfileRet = this->downloadSegment(url,&cookies,&receiveData);
-		
-		 this->dlBody = true;
+
+		this->dlBody = true;
 		if(strLastCookies.size() == 0)
 			strLastCookies = cookies;
 
@@ -86,7 +87,7 @@ void CM3u8Download::download()
 			this->setCallbackState(&stateinfo);
 			return;
 		}
-		
+
 		RegexExec(receiveData,"([^\n\r]+)",regexResult);
 
 		int index =0;
@@ -98,8 +99,8 @@ void CM3u8Download::download()
 			this->setCallbackState(&stateinfo);
 			return;
 		}
-		
-		
+
+
 
 		do{
 			std::vector<std::vector<std::string>> regexEXTINF;
@@ -129,24 +130,24 @@ void CM3u8Download::download()
 				continue;
 			}
 			else if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
-				 if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
-					 if( strItem.c_str()[0] == '/'){
+				if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
+					if( strItem.c_str()[0] == '/'){
 						//000000018000331B
 
-					 }
-					 else if(strItem.find("http")!=0){
-						 string strUrl = url;
-						 string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
-						 strItem = strUrlPath + std::string("/") + strItem;
-					 }
-					
-					 tsPairSet.push_back(std::make_pair(EXTINF_value,strItem));
-					 IVPairSet.push_back(std::make_pair(strIV,videoData));
-					 
-					 totalEXTINF+=EXTINF_value;
-					 EXTINF = false;
-				 }
-				 index++;
+					}
+					else if(strItem.find("http")!=0){
+						string strUrl = url;
+						string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
+						strItem = strUrlPath + std::string("/") + strItem;
+					}
+
+					tsPairSet.push_back(std::make_pair(EXTINF_value,strItem));
+					IVPairSet.push_back(std::make_pair(strIV,videoData));
+
+					totalEXTINF+=EXTINF_value;
+					EXTINF = false;
+				}
+				index++;
 				index2++;
 				continue;
 			}
@@ -161,13 +162,13 @@ void CM3u8Download::download()
 			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
 				if(BANDWIDTH < atoi(regexBANDWIDTH[0][1].c_str())){
 					BANDWIDTH = atoi(regexBANDWIDTH[0][1].c_str());
-					 bandWidth_url_index = index +1;
+					bandWidth_url_index = index +1;
 				}
 			}
 			index++;
 			index2++;
 		}while(index < regexResult.size());
-		
+
 		if(findEXT_X_STREAM==0){
 			// 0x0000000180004223
 			break;
@@ -179,21 +180,21 @@ void CM3u8Download::download()
 			strItem = regexResult[resolution_url_index][1];
 		else
 			strItem = regexResult[bandWidth_url_index][1];
-		
+
 		if(strItem.c_str()[0] == '/'){
 			string url_5E0 = url;
 			// 0000000180003D75
 
 
 		}
-		 else if(strItem.find("http")!=0){
-			 string strUrl = url;
+		else if(strItem.find("http")!=0){
+			string strUrl = url;
 			strUrl.find_last_of("/");
 			string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
 			strItem = strUrlPath + std::string("/") + strItem;
 		}
 
-		 this->dlBody = 0;
+		this->dlBody = 0;
 		if(this->v78 || this->downloadSegment(strItem,&strLastCookies2,&receiveData)!=0)
 			break;
 		this->dlBody=1;
@@ -217,7 +218,7 @@ void CM3u8Download::download()
 			// 0000000180004591
 			printf("hello");
 		}
-		
+
 	}
 	fseek(file,0,0);
 	this->totalSize = totalEXTINF * 500 / 8;
@@ -225,8 +226,10 @@ void CM3u8Download::download()
 	if(tsPairSet.size() > 0){
 		int i=0;
 		while(true){
+			EndInfo endinfo = {0};
 			string strCookieTemp = strLastCookies;			
 			string tsData="";
+			int tsEXTInfo = tsPairSet[i].first;
 			string tsUrl = tsPairSet[i].second;
 			string selectIV = IVPairSet[i].first;
 			string strItem = tsUrl;
@@ -242,16 +245,48 @@ void CM3u8Download::download()
 				// 0000000180004AE7
 
 			}
-			if(this->v78 == 0){
+			if(this->v78){
+				// 000000018000532C
+			
+			}
 				if(this->downloadSegment(strItem,&strCookieTemp,&tsData)){
 					// 000000018000533A
-					
+
 				}
-					
-			}
+				this->downloadedSize += tsData.size();
+				acumExtInfo+=	tsEXTInfo;
+				this->totalSize = this->downloadedSize * totalEXTINF/ acumExtInfo;
+				fseek(file,0,2);
+				int fpos = ftell(file);
+				if( fpos > 24 ){
+					fseek(file,fpos-24,0);
+					fread(&endinfo,1,24,file);
+					fseek(file,-24,1);
+				}
+				size_t writeSize = 0;				
+				if(selectIV.size()!=0){
+					// 0000000180004E9F
+				}
+				else{
+					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);
+				}
+				if(writeSize != tsData.size()) {
+					// 1800051E2
+				
+				}
+
+				if(i+1<tsPairSet.size()){
+					strcpy(endinfo.sig,"WSDS");
+					 endinfo.index = i+1;
+					 endinfo.size = acumExtInfo;
+					fwrite(&endinfo,1,24,file);
+					fflush(file);
+				}
+			
+			if(i>= tsPairSet.size()) break;
 		}
 	}
-	
+
 }
 
 __int64* sub_180009CC0() {

@@ -21,3 +21,8 @@ public:
 	curl_slist * headerchain; //E8
 };
 
+struct EndInfo{
+	char sig[16];
+	int size;
+	int index;
+};
