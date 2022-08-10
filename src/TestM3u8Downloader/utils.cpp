@@ -17,6 +17,19 @@ time_t  currentTime;
 bool  heapFreeHook(){
 	return true;
 }
+string GetProtocol(const string& url)//协议名
+{
+	size_t pos = url.find("://");
+	if (pos != string::npos)
+	{
+		return url.substr(0, pos - 0);
+	}
+	else
+	{
+		return string();//匿名对象
+	}
+
+}
 
 string getGuid(void * rcx){
     char buffer[64] = { 0, };

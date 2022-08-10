@@ -223,9 +223,35 @@ void CM3u8Download::download()
 	this->totalSize = totalEXTINF * 500 / 8;
 	this->time = 0;
 	if(tsPairSet.size() > 0){
-		// 0000000180004700 now
-	}
+		int i=0;
+		while(true){
+			string strCookieTemp = strLastCookies;			
+			string tsData="";
+			string tsUrl = tsPairSet[i].second;
+			string selectIV = IVPairSet[i].first;
+			string strItem = tsUrl;
+			string protocol = GetProtocol(url);
+			if(protocol == ""){
+				protocol = "http";
+			}
+			if(strItem.c_str()[0] == '/'){
+				// 00000001800049D1
 
+			}
+			else if(strItem.find("http")!=0){
+				// 0000000180004AE7
+
+			}
+			if(this->v78 == 0){
+				if(this->downloadSegment(strItem,&strCookieTemp,&tsData)){
+					// 000000018000533A
+					
+				}
+					
+			}
+		}
+	}
+	
 }
 
 __int64* sub_180009CC0() {
