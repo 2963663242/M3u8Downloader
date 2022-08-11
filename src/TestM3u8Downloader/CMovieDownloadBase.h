@@ -19,7 +19,7 @@ public:
 	virtual ~CMovieDownloadBase();
 	 CMovieDownloadBase *CMovieDownloadBaseEx();
 	 int start(bool flag1,bool flag2);
-	 void setCallbackState(stateCallback * stateInfo);
+	 void setCallbackState(stateCallback  stateInfo);
 	
 	string getGuid();
 
@@ -29,7 +29,7 @@ public:
 	void  (*v10)(char *);  //10
 	long long int v18;   //18
 	char * dsSavePath; //20
-	char * savePath;
+	char * savePath; // 28
 	char * infoSavePath;
 	char * url;
 	char * strCookie;//40

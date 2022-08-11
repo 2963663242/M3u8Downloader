@@ -32,8 +32,9 @@ int main()
 	MovieDLGetState = (const char* (*)(ULONGLONG))GetProcAddress(dllDownloader, "MovieDLGetState");
 
 	CM3u8Download * instance = 0;
-	const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+	//const char * strUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
 	//const char * strUrl = "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8";
+	const char * strUrl = "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1660233445/ei/hdL0Yo-EDM-kkwbq1rW4DA/ip/92.38.209.20/id/R2iMq5LKXco.3/itag/95/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D136/hls_chunk_host/rr4---sn-a5msen76.googlevideo.com/playlist_duration/30/manifest_duration/30/gcr/us/vprv/1/playlist_type/DVR/mh/Ij/mip/173.211.33.162/mm/44/mn/sn-a5msen76/ms/lva/mv/u/mvi/4/pl/21/dover/11/pacing/0/keepalive/yes/fexp/24001373,24007246/mt/1660210757/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,playlist_duration,manifest_duration,gcr,vprv,playlist_type/sig/AOq0QJ8wRgIhALzEVW34e5GpkIDbQPsM-Mhjngz04Haxsez6CA34D52eAiEAj-3_unMfavt1GSog8AjF-BPSnKsihSiO7Xj3lDOfDGo%3D/lsparams/hls_chunk_host,mh,mip,mm,mn,ms,mv,mvi,pl/lsig/AG3C_xAwRAIgZmcGk_GMpgpT_HKCTFHzIAZb57YmC_src2KLbFnjSV8CIGRyGFfeEywKVKmtnhsB3V1gjJm7bB5MXqoNGEYv7dtS/playlist/index.m3u8";
 	//const char * strUrl = "https://vkceu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e5466275.m3u8"; //error url
 	const char* strSavePath = "1.mp4";
 	const char* strCookie = "";

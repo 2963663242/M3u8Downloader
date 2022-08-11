@@ -66,7 +66,7 @@ void CM3u8Download::download()
 
 	LogD(Info,"%s ==> connecting...",this->guid.c_str());
 
-	this->setCallbackState(&stateinfo);
+	this->setCallbackState(stateinfo);
 
 	while(true){
 		receiveData = "";
@@ -84,7 +84,7 @@ void CM3u8Download::download()
 		if(dlProfileRet){
 			stateinfo.type = 1;
 			stateinfo.speed = dlProfileRet;
-			this->setCallbackState(&stateinfo);
+			this->setCallbackState(stateinfo);
 			return;
 		}
 
@@ -96,7 +96,7 @@ void CM3u8Download::download()
 		if(regexResult.size() == 0 ){
 			stateinfo.type = 1;
 			stateinfo.speed = dlProfileRet;
-			this->setCallbackState(&stateinfo);
+			this->setCallbackState(stateinfo);
 			return;
 		}
 
@@ -115,7 +115,7 @@ void CM3u8Download::download()
 				}
 				if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"#EXT-X-KEY:") !=0){
 					// 00000001800027B5
-
+				printf("if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_st");
 
 
 				}
@@ -133,7 +133,7 @@ void CM3u8Download::download()
 				if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
 					if( strItem.c_str()[0] == '/'){
 						//000000018000331B
-
+						printf("if( strItem.c_str()[0] == '/'){");
 					}
 					else if(strItem.find("http")!=0){
 						string strUrl = url;
@@ -157,6 +157,7 @@ void CM3u8Download::download()
 
 			if(find_resolution){
 				// 000000018000385A
+				printf("if(find_resolution){");
 			}
 
 			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
@@ -184,7 +185,7 @@ void CM3u8Download::download()
 		if(strItem.c_str()[0] == '/'){
 			string url_5E0 = url;
 			// 0000000180003D75
-
+			printf("string url_5E0 = url;");
 
 		}
 		else if(strItem.find("http")!=0){
@@ -204,27 +205,49 @@ void CM3u8Download::download()
 	if(tsPairSet.size() == 0){
 		stateinfo.type = 1;
 		stateinfo.speed = dlProfileRet;
-		this->setCallbackState(&stateinfo);
+		this->setCallbackState(stateinfo);
 		return;
 	}
 	FILE * file = fopen(this->dsSavePath,"a+b");
 	if(file == 0){
 		// 0000000180004287
+		printf("if(file == 0){");
 	}
+	EndInfo endInfo = {0};
 	if(this->flag1){
 		fseek(file,0,2);
 		int fpos = ftell(file);
 		if( fpos > 24 ){
-			// 0000000180004591
-			printf("hello");
+			// 0x0000000180004591
+			
+
+			fseek(file,fpos-24,0);
+			fread(&endInfo,1,24,file);
+			if(strstr(endInfo.sig,"WSDS")){
+				if(endInfo.index > 0){
+					if(endInfo.index < tsPairSet.size()){
+						int i=0;
+						while(i<endInfo.index){
+							acumExtInfo += tsPairSet[i].first;
+							 i++;
+						}
+						 this->downloadedSize = fpos-24;
+						 this->totalSize += this->downloadedSize * totalEXTINF/acumExtInfo;
+						
+					}
+				}	
+			}
 		}
 
 	}
-	fseek(file,0,0);
-	this->totalSize = totalEXTINF * 500 / 8;
+	if(endInfo.index==0){
+		fseek(file,0,0);
+		this->totalSize = totalEXTINF * 500 / 8;
+	}
+
 	this->time = 0;
 	if(tsPairSet.size() > 0){
-		int i=0;
+		int i=endInfo.index;
 		while(true){
 			EndInfo endinfo = {0};
 			string strCookieTemp = strLastCookies;			
@@ -239,19 +262,30 @@ void CM3u8Download::download()
 			}
 			if(strItem.c_str()[0] == '/'){
 				// 00000001800049D1
+				printf("if(strItem.c_str()[0] == '/'){");
 
 			}
 			else if(strItem.find("http")!=0){
 				// 0000000180004AE7
+				printf("else if(strItem.find");
 
 			}
 			if(this->v78){
 				// 000000018000532C
+				printf("if(this->v78){");
 			
 			}
-				if(this->downloadSegment(strItem,&strCookieTemp,&tsData)){
-					// 000000018000533A
-
+			int retCode = this->downloadSegment(strItem,&strCookieTemp,&tsData);
+				if(retCode){
+					// 0x000000018000533A
+					if(this->v78 == 0){
+						stateCallback stateinfo;
+						stateinfo.type=1;
+						stateinfo.speed  =  this->invalidDLCount > 60 ? 28 : retCode;
+						this->setCallbackState(stateinfo);
+						fclose(file);
+						return ;
+					}
 				}
 				this->downloadedSize += tsData.size();
 				acumExtInfo+=	tsEXTInfo;
@@ -266,12 +300,14 @@ void CM3u8Download::download()
 				size_t writeSize = 0;				
 				if(selectIV.size()!=0){
 					// 0000000180004E9F
+					printf("if(selectIV.size()!=0){");
 				}
 				else{
 					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);
 				}
 				if(writeSize != tsData.size()) {
 					// 1800051E2
+					printf("if(writeSize != tsData.size()) {");
 				
 				}
 
@@ -282,11 +318,17 @@ void CM3u8Download::download()
 					fwrite(&endinfo,1,24,file);
 					fflush(file);
 				}
-			
+				i++;
 			if(i>= tsPairSet.size()) break;
 		}
 	}
 
+
+	fclose(file);
+	rename(this->dsSavePath,this->savePath);
+	stateinfo.type = 5;
+	this->setCallbackState(stateinfo);
+	LogD(Info, "============================ %s ==> End Of Download ============================", this->guid.c_str());
 }
 
 __int64* sub_180009CC0() {
@@ -328,7 +370,7 @@ int progress_callback(CM3u8Download *downloader,
 							  stateinfo.speed = speed;
 							  stateinfo.downloadingSize = dlnow + downloader->downloadedSize;
 							  stateinfo.totalSize = downloader->totalSize;
-							  downloader->setCallbackState(&stateinfo);
+							  downloader->setCallbackState(stateinfo);
 							  downloader->time = curtime;
 							  if(dlnow == downloader->dlnow){
 								  downloader->invalidDLCount++;
