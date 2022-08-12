@@ -10,22 +10,7 @@ CM3u8Download::CM3u8Download()
 }
 
 
-//int maxCount = strItem.size()-16;
-//char * assiiTtem = (char *)strItem.c_str();
-//char * pPos;
-//while((pPos = (char *)memchr((void *)assiiTtem,(int)'#',(size_t)maxCount))!=0)
-//{
-//
-//	if((std::string(pPos)).rfind("#EXT-X-STREAM-INF",0)==0){
-//		findEXT_X_STREAM =1;
-//		LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());
-//		break;
-//	}
-//
-//	maxCount += assiiTtem - pPos -1;
-//	assiiTtem = pPos +1;
-//
-//}
+
 void CM3u8Download::download()
 {
 	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.c_str());
@@ -104,8 +89,9 @@ void CM3u8Download::download()
 
 		do{
 			std::vector<std::vector<std::string>> regexEXTINF;
+			std::vector<std::vector<std::string>> regexResolution;
 			string strItem = regexResult[index2][0];
-
+			
 			if(strItem.size() != 0){
 				if( strItem.size() >= 17){
 					if(strstr(strItem.c_str(),"#EXT-X-STREAM-INF")!=0 && strItem.rfind("#EXT-X-STREAM-INF",0)==0){
@@ -115,7 +101,7 @@ void CM3u8Download::download()
 				}
 				if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"#EXT-X-KEY:") !=0){
 					// 00000001800027B5
-				printf("if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_st");
+				printf("if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_st\n");
 
 
 				}
@@ -132,8 +118,8 @@ void CM3u8Download::download()
 			else if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
 				if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
 					if( strItem.c_str()[0] == '/'){
-						//000000018000331B
-						printf("if( strItem.c_str()[0] == '/'){");
+						// 000000018000331B
+						printf("if( strItem.c_str()[0] == '/'){\n");
 					}
 					else if(strItem.find("http")!=0){
 						string strUrl = url;
@@ -156,11 +142,14 @@ void CM3u8Download::download()
 			std::vector<std::vector<std::string>> regexBANDWIDTH;
 
 			if(find_resolution){
-				// 000000018000385A
-				printf("if(find_resolution){");
+				// 0x000000018000385A
+				if(RegexExec(strItem,"RESOLUTION=[0-9]+x([0-9]+)",regexResolution) && RESOLUTION < atoi(regexResolution[0][1].c_str())){
+					RESOLUTION = atoi(regexResolution[0][1].c_str());
+				resolution_url_index = index +1;
+				}
+		
 			}
-
-			if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
+			else if(RegexExec(strItem,"BANDWIDTH=([0-9]+)",regexBANDWIDTH)){
 				if(BANDWIDTH < atoi(regexBANDWIDTH[0][1].c_str())){
 					BANDWIDTH = atoi(regexBANDWIDTH[0][1].c_str());
 					bandWidth_url_index = index +1;
@@ -185,14 +174,14 @@ void CM3u8Download::download()
 		if(strItem.c_str()[0] == '/'){
 			string url_5E0 = url;
 			// 0000000180003D75
-			printf("string url_5E0 = url;");
+			printf("string url_5E0 = url;\n");
 
 		}
 		else if(strItem.find("http")!=0){
-			string strUrl = url;
-			strUrl.find_last_of("/");
-			string strUrlPath = strUrl.substr(0,strUrl.find_last_of("/")) ;
+
+			string strUrlPath = url.substr(0,url.find_last_of("/")) ;
 			strItem = strUrlPath + std::string("/") + strItem;
+
 		}
 
 		this->dlBody = 0;
@@ -209,9 +198,14 @@ void CM3u8Download::download()
 		return;
 	}
 	FILE * file = fopen(this->dsSavePath,"a+b");
+	
 	if(file == 0){
-		// 0000000180004287
-		printf("if(file == 0){");
+		// 0x0000000180004287
+		stateCallback stateinfo;
+		stateinfo.type=1;
+		stateinfo.speed  =  23;
+		this->setCallbackState(stateinfo);
+		return ;
 	}
 	EndInfo endInfo = {0};
 	if(this->flag1){
@@ -262,17 +256,17 @@ void CM3u8Download::download()
 			}
 			if(strItem.c_str()[0] == '/'){
 				// 00000001800049D1
-				printf("if(strItem.c_str()[0] == '/'){");
+				printf("if(strItem.c_str()[0] == '/'){\n");
 
 			}
 			else if(strItem.find("http")!=0){
 				// 0000000180004AE7
-				printf("else if(strItem.find");
+				printf("else if(strItem.find\n");
 
 			}
 			if(this->v78){
 				// 000000018000532C
-				printf("if(this->v78){");
+				printf("if(this->v78){\n");
 			
 			}
 			int retCode = this->downloadSegment(strItem,&strCookieTemp,&tsData);
@@ -300,14 +294,14 @@ void CM3u8Download::download()
 				size_t writeSize = 0;				
 				if(selectIV.size()!=0){
 					// 0000000180004E9F
-					printf("if(selectIV.size()!=0){");
+					printf("if(selectIV.size()!=0){\n");
 				}
 				else{
 					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);
 				}
 				if(writeSize != tsData.size()) {
 					// 1800051E2
-					printf("if(writeSize != tsData.size()) {");
+					printf("if(writeSize != tsData.size()) {\n");
 				
 				}
 
@@ -331,29 +325,12 @@ void CM3u8Download::download()
 	LogD(Info, "============================ %s ==> End Of Download ============================", this->guid.c_str());
 }
 
-__int64* sub_180009CC0() {
-	__int64* arg_8;
-	
-	if (arg_8 = new __int64[0x14]) {
-		arg_8[0] = 0;
-	}
-	if (&arg_8[1]) {
-		arg_8[1] = 0;
-	}
-	if (&arg_8[2]) {
-		arg_8[2] = 0;
-	}
-	*((char*)arg_8 + 0x68) = 1;
-	*((char*)arg_8 + 0x69) = 0;
-	return arg_8;
-}
 
-//void *write_callback = (void *)0x0000000180001F30;
 size_t write_callback(char *ptr, size_t size, size_t nmemb,string * pReceiveData){
 	pReceiveData->append(ptr,nmemb);
 	return nmemb*size;
 }
-//void * progress_callback = (void *)0x0000000180001DF0;
+
 int progress_callback(CM3u8Download *downloader,
 					  double dltotal,
 					  double dlnow,
