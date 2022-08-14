@@ -1,5 +1,6 @@
 #include "CM3u8Download.h"
 #include <string>
+#include <map>
 #include "utils.h"
 #include "log.h"
 
@@ -25,6 +26,7 @@ void CM3u8Download::download()
 	std::vector<std::vector<std::string>> regexResult;
 	std::vector<std::pair<int,std::string>> tsPairSet;
 	std::vector<std::pair<std::string,std::string>> IVPairSet;
+	std::map<std::string,std::string> urlInfos;
 	bool findEXT_X_STREAM = 0;
 	int RESOLUTION = 0;
 	int BANDWIDTH = 0;
@@ -91,7 +93,7 @@ void CM3u8Download::download()
 			std::vector<std::vector<std::string>> regexEXTINF;
 			std::vector<std::vector<std::string>> regexResolution;
 			string strItem = regexResult[index2][0];
-			
+
 			if(strItem.size() != 0){
 				if( strItem.size() >= 17){
 					if(strstr(strItem.c_str(),"#EXT-X-STREAM-INF")!=0 && strItem.rfind("#EXT-X-STREAM-INF",0)==0){
@@ -99,12 +101,50 @@ void CM3u8Download::download()
 						LogD(Info,"%s ==> %s",this->guid.c_str(),strItem.c_str());	
 					}
 				}
-				if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_str(),"#EXT-X-KEY:") !=0){
-					// 00000001800027B5
-				printf("if(strItem.size() != 0 && strItem.size() >= 11 && strstr(strItem.c_st\n");
+				if(strItem.size() != 0 && strItem.size() >= 11 &&strItem.find("#EXT-X-KEY:")==0){
+					// 0x00000001800027B5
+					if( strItem.find("METHOD=AES-128") != -1 &&  strItem.find("METHOD=AES-128") != 0){
+						std::vector<std::vector<std::string>> urlRegex;
+						string  subUrl;
+						if(RegexExec(strItem,"URI=\"([^\"]+)\"",urlRegex)){
+							subUrl = urlRegex[0][1];
+						}
+						std::vector<std::vector<std::string>> IVRegex;
+						if(RegexExec(strItem,"IV=0x([0-9A-Za-z]+)",IVRegex)){
+							strIV = IVRegex[0][1];
+						}
+						if(subUrl.size()!=0){
+							if(urlInfos.find(subUrl) ==  urlInfos.end()){
+								string selectUrl = subUrl;
+								string strCookieTemp = strLastCookies;
+								if(selectUrl.data()[0] == '/'){
+									// 0000000180002CD1
+								}
+								else if(strItem.find("http")!=0){
+									// 0000000180002CD1
+								}
+								if(this->v78==0 && (dlProfileRet = downloadSegment(selectUrl,&strCookieTemp,&videoData))==0){
 
+								}
+								else{
+									stateinfo.type = 1;
+									stateinfo.speed = dlProfileRet;
+									this->setCallbackState(stateinfo);
+									return;
+								}
+
+
+
+							}
+							urlInfos[subUrl] = videoData;
+							index++;
+							index2++;
+							continue;
+						}
+					}
 
 				}
+				
 			}
 
 			if(strItem.find("#EXTINF:") == 0 && RegexExec(strItem,"#EXTINF:([0-9\\.]+)",regexEXTINF)){
@@ -128,7 +168,7 @@ void CM3u8Download::download()
 					}
 
 					tsPairSet.push_back(std::make_pair(EXTINF_value,strItem));
-					IVPairSet.push_back(std::make_pair(strIV,videoData));
+					IVPairSet.push_back(std::make_pair(videoData,strIV));
 
 					totalEXTINF+=EXTINF_value;
 					EXTINF = false;
@@ -248,7 +288,7 @@ void CM3u8Download::download()
 			string tsData="";
 			int tsEXTInfo = tsPairSet[i].first;
 			string tsUrl = tsPairSet[i].second;
-			string selectIV = IVPairSet[i].first;
+			videoData = IVPairSet[i].first;
 			string strItem = tsUrl;
 			string protocol = GetProtocol(url);
 			if(protocol == ""){
@@ -292,7 +332,7 @@ void CM3u8Download::download()
 					fseek(file,-24,1);
 				}
 				size_t writeSize = 0;				
-				if(selectIV.size()!=0){
+				if(videoData.size()!=0){
 					// 0000000180004E9F
 					printf("if(selectIV.size()!=0){\n");
 				}
@@ -405,7 +445,7 @@ CURLcode  CM3u8Download::downloadSegment(string& url,string * pCookie,string *pR
 			if(strlen(lastUrl) > 1){
 				string strLastUrl;
 				strLastUrl = lastUrl;   
-				if(!RegexExec(strLastUrl,"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}",ipMatch)){
+				if(!RegexExec(strLastUrl,"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}",ipMatch)){
 					url = lastUrl;
 				}
 
