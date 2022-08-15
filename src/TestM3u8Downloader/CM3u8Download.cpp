@@ -1,6 +1,7 @@
 #include "CM3u8Download.h"
 #include <string>
 #include <map>
+#include 
 #include "utils.h"
 #include "log.h"
 
@@ -137,10 +138,11 @@ void CM3u8Download::download()
 
 							}
 							urlInfos[subUrl] = videoData;
-							index++;
-							index2++;
-							continue;
+							
 						}
+						index++;
+						index2++;
+						continue;
 					}
 
 				}
@@ -334,7 +336,10 @@ void CM3u8Download::download()
 				size_t writeSize = 0;				
 				if(videoData.size()!=0){
 					// 0000000180004E9F
-					printf("if(selectIV.size()!=0){\n");
+					 string IV = strIV;
+					char * IVBin = new char[16];
+					hex2Bin(IV,IVBin);
+
 				}
 				else{
 					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);

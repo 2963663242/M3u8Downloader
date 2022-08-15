@@ -190,3 +190,22 @@ bool RegexExec(std::string const& url, char const* rex, std::vector<std::vector<
 	}
 return true;
 }
+
+
+void hex2Bin(const std::string hexStr , char* pData)
+{
+
+	int wSize=hexStr.size()/2;
+	
+	for (int i=0;i<hexStr.size();i+=2)
+	{
+		int ch=0;
+
+		char temp[10]="";
+		temp[0]=hexStr[i];
+		temp[1]=hexStr[i+1];
+
+		sscanf( temp ,"%x",&ch);  // HEX to int
+		pData[i/2]=ch;
+	}
+}
