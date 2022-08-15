@@ -192,7 +192,7 @@ return true;
 }
 
 
-void hex2Bin(const std::string hexStr , char* pData)
+void hex2Bin(const std::string hexStr ,unsigned char* pData)
 {
 
 	int wSize=hexStr.size()/2;

@@ -26,5 +26,5 @@ bool RegexExec(std::string const&, char const*, std::vector<std::vector<std::str
 //unsigned int StartAddress(void* downloader);
 bool  heapFreeHook();
 string GetProtocol(const string& url);
-void hex2Bin(const std::string hexStr , char* pData);
+void hex2Bin(const std::string hexStr ,unsigned char* pData);
 #endif

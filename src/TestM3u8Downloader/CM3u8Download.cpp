@@ -335,15 +335,21 @@ void CM3u8Download::download()
 				}
 				size_t writeSize = 0;				
 				if(videoData.size()!=0){
-					// 0000000180004E9F
+					// 0x0000000180004E9F
 					 string IV = strIV;
-					char * IVBin = new char[16];
+					 char * decryptData = new char[tsData.size()];
+					unsigned char * IVBin = new unsigned char[16];
 					hex2Bin(IV,IVBin);
+
 					aes_context aes_ctx = {0};
 					aes_ctx.nr = 16;
 
-					aes_setkey_enc(&aes_ctx, (const unsigned char *)videoData.c_str(), 128);
-
+					aes_setkey_dec(&aes_ctx, (const unsigned char *)videoData.c_str(), 128);
+					aes_crypt_cbc(&aes_ctx,AES_DECRYPT,tsData.size(),IVBin,(const unsigned char *)tsData.c_str(),(unsigned char *)decryptData);
+					writeSize = fwrite(decryptData,1,tsData.size(),file);
+					delete [] decryptData;
+					delete [] IVBin;
+	
 				}
 				else{
 					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);
