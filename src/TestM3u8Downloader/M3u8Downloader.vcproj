@@ -108,7 +108,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\regex\include\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)..\..\third\win\regex\include\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\include\&quot;;&quot;$(SolutionDir)..\..\third\win\polarssl\include\&quot;"
 				RuntimeLibrary="0"
 				DebugInformationFormat="3"
 			/>
@@ -123,8 +123,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcurl.lib findAll.lib"
-				AdditionalLibraryDirectories="&quot;$(SolutionDir)..\..\third\win\regex\lib\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\lib\&quot;"
+				AdditionalDependencies="libcurl.lib findAll.lib polarssl.lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)..\..\third\win\regex\lib\&quot;;&quot;$(SolutionDir)..\..\third\win\polarssl\lib\&quot;;&quot;$(SolutionDir)..\..\third\win\curl\lib\&quot;"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
 			/>
@@ -304,6 +304,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PolarSSL.c"
+				>
+			</File>
+			<File
 				RelativePath=".\utils.cpp"
 				>
 			</File>
@@ -335,6 +339,10 @@
 			</File>
 			<File
 				RelativePath=".\M3u8DownloaderHook.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PolarSSL.h"
 				>
 			</File>
 			<File

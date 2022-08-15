@@ -1,7 +1,7 @@
 #include "CM3u8Download.h"
 #include <string>
 #include <map>
-#include 
+#include "polarssl/aes.h"
 #include "utils.h"
 #include "log.h"
 
@@ -339,6 +339,10 @@ void CM3u8Download::download()
 					 string IV = strIV;
 					char * IVBin = new char[16];
 					hex2Bin(IV,IVBin);
+					aes_context aes_ctx = {0};
+					aes_ctx.nr = 16;
+
+					aes_setkey_enc(&aes_ctx, (const unsigned char *)videoData.c_str(), 128);
 
 				}
 				else{
