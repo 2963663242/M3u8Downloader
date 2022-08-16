@@ -209,3 +209,4 @@ void hex2Bin(const std::string hexStr ,unsigned char* pData)
 		pData[i/2]=ch;
 	}
 }
+

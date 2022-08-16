@@ -307,8 +307,7 @@ void CM3u8Download::download()
 
 			}
 			if(this->v78){
-				// 000000018000532C
-				printf("if(this->v78){\n");
+				return ;
 			
 			}
 			int retCode = this->downloadSegment(strItem,&strCookieTemp,&tsData);
@@ -355,8 +354,13 @@ void CM3u8Download::download()
 					writeSize = fwrite(tsData.c_str(),1,tsData.size(),file);
 				}
 				if(writeSize != tsData.size()) {
-					// 1800051E2
-					printf("if(writeSize != tsData.size()) {\n");
+					// 0x1800051E2
+					stateCallback stateinfo;
+					stateinfo.type=1;
+					stateinfo.speed  =  retCode;
+					this->setCallbackState(stateinfo);
+					fclose(file);
+					return ;
 				
 				}
 
