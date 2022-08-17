@@ -3,14 +3,15 @@
 #include "CMovieDownloadBase.h"
 #include "utils.h"
 
-
 __int64* sub_180009CC0();
 
 class CM3u8Download: public CMovieDownloadBase
 {
 public:
 	CM3u8Download();
-	void download();
+	virtual  ~CM3u8Download();
+	virtual void startDownload();
+	virtual void startDownloadExternal();
 	CURLcode  downloadSegment(string& url,string * pCookie,string *pReceiveData);
 public:
 	int time; //D0

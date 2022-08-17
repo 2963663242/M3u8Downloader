@@ -17,16 +17,17 @@ class CMovieDownloadBase
 public:
 	 CMovieDownloadBase();
 	virtual ~CMovieDownloadBase();
-	 CMovieDownloadBase *CMovieDownloadBaseEx();
-	 int start(bool flag1,bool flag2);
-	 void setCallbackState(stateCallback  stateInfo);
+	virtual int start(bool flag1,bool flag2);
+	virtual void stop();
+	virtual void wait();
+	void setCallbackState(stateCallback  stateInfo);
 	
 	string getGuid();
 
 public:
 	//void *vft;
 	uintptr_t threadResult; //8
-	void  (*v10)(char *);  //10
+	void  (*callback)(char *);  //10
 	long long int v18;   //18
 	char * dsSavePath; //20
 	char * savePath; // 28
@@ -41,13 +42,13 @@ public:
 	bool flag2;  //65
 	long long int downloadedSize; //68
 	long long int totalSize; //70
-	 int v78; 
+	 int stopFlag; 
 	 int stateType;
 	 string guid; //80
 	 string state; //A8
 };
 
-extern _beginthreadex_proc_type  StartAddress;
+
 
 struct stateCallback
 {

@@ -8,12 +8,19 @@
 
 CM3u8Download::CM3u8Download()
 {
+	headerchain = 0;
 	curl_global_init(CURL_GLOBAL_ALL); 
 }
+CM3u8Download::~CM3u8Download(){
 
 
+}
 
-void CM3u8Download::download()
+void CM3u8Download::startDownloadExternal(){
+	this->startDownload();
+}
+
+void CM3u8Download::startDownload()
 {
 	LogD(Info, "============================ %s ==> Start Download ============================", this->guid.c_str());
 
@@ -63,7 +70,7 @@ void CM3u8Download::download()
 		if(strLastCookies.size() != 0)
 			cookies = strLastCookies;
 		this->dlBody = false;
-		if(this->v78 == 0)
+		if(this->stopFlag == 0)
 			dlProfileRet = this->downloadSegment(url,&cookies,&receiveData);
 
 		this->dlBody = true;
@@ -129,7 +136,7 @@ void CM3u8Download::download()
 									string strUrlPath = url.substr(0,url.find_last_of("/")) ;
 									selectUrl = strUrlPath + std::string("/") + selectUrl;
 								}
-								if(this->v78==0 && (dlProfileRet = downloadSegment(selectUrl,&strCookieTemp,&videoData))==0){
+								if(this->stopFlag==0 && (dlProfileRet = downloadSegment(selectUrl,&strCookieTemp,&videoData))==0){
 
 								}
 								else{
@@ -233,7 +240,7 @@ void CM3u8Download::download()
 		}
 
 		this->dlBody = 0;
-		if(this->v78 || this->downloadSegment(strItem,&strLastCookies2,&receiveData)!=0)
+		if(this->stopFlag || this->downloadSegment(strItem,&strLastCookies2,&receiveData)!=0)
 			break;
 		this->dlBody=1;
 		url = strItem;
@@ -320,14 +327,14 @@ void CM3u8Download::download()
 				}
 
 			}
-			if(this->v78){
+			if(this->stopFlag){
 				return ;
 			
 			}
 			int retCode = this->downloadSegment(strItem,&strCookieTemp,&tsData);
 				if(retCode){
 					// 0x000000018000533A
-					if(this->v78 == 0){
+					if(this->stopFlag == 0){
 						stateCallback stateinfo;
 						stateinfo.type=1;
 						stateinfo.speed  =  this->invalidDLCount > 60 ? 28 : retCode;
@@ -429,7 +436,7 @@ int progress_callback(CM3u8Download *downloader,
 
 						  }
 
-						  if(downloader-> v78 !=0  && downloader->invalidDLCount > 0x3C)
+						  if(downloader-> stopFlag !=0  && downloader->invalidDLCount > 0x3C)
 							  return 1;
 						  return 0;
 }

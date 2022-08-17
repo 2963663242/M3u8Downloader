@@ -1,10 +1,13 @@
 #include "hook.h"
 #include "utils.h"
 #include <Dbghelp.h>
-#include "CMovieDownloadBase.h"
 #include <string>
+#include <assert.h>
 #include "log.h"
 #include "regex.h"
+#include "CMovieDownloadBase.h"
+#include "CM3u8Download.h"
+
 
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "Dbghelp.lib")
@@ -298,4 +301,15 @@ http parseURL(std::string url){
 		hUrl.fragment = std::string(parseptr2,0,len); //get fragment
 	}
 	return hUrl;
+}
+
+int __stdcall StartAddress (CM3u8Download * downloader){
+	assert(downloader);
+	if(downloader->flag1!=0){
+		downloader->startDownload();
+	}
+	else{
+		downloader->startDownloadExternal();
+	}
+	return 0;
 }

@@ -1,11 +1,29 @@
 #include "CMovieDownloadBase.h"
 #include "log.h"
 
-_beginthreadex_proc_type StartAddress =(_beginthreadex_proc_type)0x000000018000B290;
 
 CMovieDownloadBase::CMovieDownloadBase()
-{
-	this->guid = this->getGuid();
+{	this->threadResult = 0;
+this->callback = 0;
+this->v18 = 0;
+this->dsSavePath = 0;
+this->savePath = 0;
+this->infoSavePath = 0;
+this->url = 0;
+this->strCookie = 0;
+this->v48 = 0;
+this->useragent = 0;
+this->v58 = 0;
+this->speedLimit = 0;
+this->flag1 = 0;
+this->flag2 = 0;
+this->downloadedSize = 0;
+this->totalSize = 0;
+this->stopFlag = 0;
+this->stateType = 0;
+this->guid = "";
+this->state = "";
+this->guid = this->getGuid();
 }
 CMovieDownloadBase::~CMovieDownloadBase()
 {
@@ -30,33 +48,7 @@ string CMovieDownloadBase::getGuid() {
 
 	return buffer;
 }
-CMovieDownloadBase* CMovieDownloadBase::CMovieDownloadBaseEx()
-{
-	//this->vft = (void*)0x00000001800A19A0;
-	this->threadResult = 0;
-	this->v10 = 0;
-	this->v18 = 0;
-	this->dsSavePath = 0;
-	this->savePath = 0;
-	this->infoSavePath = 0;
-	this->url = 0;
-	this->strCookie = 0;
-	this->v48 = 0;
-	this->useragent = 0;
-	this->v58 = 0;
-	this->speedLimit = 0;
-	this->flag1 = 0;
-	this->flag2 = 0;
-	this->downloadedSize = 0;
-	this->totalSize = 0;
-	this->v78 = 0;
-	this->stateType = 0;
-	this->guid = "";
-	this->state = "";
-	
- this->guid = this->getGuid();
-	return this;
-}
+
 int CMovieDownloadBase::start(bool flag1, bool flag2)
 {
 	char curDir[1024];
@@ -76,7 +68,7 @@ int CMovieDownloadBase::start(bool flag1, bool flag2)
 		this->flag1 = flag1;
 		this->flag2 = flag2;
 		this->downloadedSize = 0;
-		this->v78 = 0;
+		this->stopFlag = 0;
 		var_428 = 0;
 
 		this->threadResult = _beginthreadex(0, 0, (_beginthreadex_proc_type)StartAddress, this, 0, &var_428);
@@ -110,9 +102,19 @@ void CMovieDownloadBase::setCallbackState(stateCallback stateInfo)
 	//*p = 0;
 	this->state = state;
 	LogD(Info, "callback %s", state.c_str());
-	if (this->v10 != 0 && this->v78 == 0) {
-		this->v10((char *)state.c_str());
+	if (this->callback != 0 && this->stopFlag == 0) {
+		this->callback((char *)state.c_str());
 	}
 }
 
 
+void CMovieDownloadBase::stop(){
+	 this->stopFlag = 1;
+	this->wait();
+}
+
+void CMovieDownloadBase::wait(){
+	if(threadResult!=0){
+		WaitForSingleObject((HANDLE)threadResult,-1);
+	}
+}

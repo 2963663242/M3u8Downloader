@@ -52,7 +52,7 @@ int main()
 	const char* data=0;
 	int a = sizeof(string);
 	ALogInit((char *)"./log.txt");
-	instance = MovieDLCreate();
+	instance = M3u8DownloaderHook::MovieDLCreate();
 	M3u8DownloaderHook::MovieDLSetUrl((CM3u8Download *)instance, strUrl);
 	M3u8DownloaderHook::MovieDLSetSavePath((CM3u8Download*)instance,strSavePath);
 	M3u8DownloaderHook::MovieDLSetCookie((CM3u8Download*)instance, strCookie);

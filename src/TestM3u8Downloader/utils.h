@@ -8,6 +8,9 @@
 
 using namespace std;
 
+class CM3u8Download;
+
+
 extern unsigned int *g_count;
 extern char logPath[1024];
 
@@ -38,4 +41,5 @@ bool  heapFreeHook();
 string GetProtocol(const string& url);
 void hex2Bin(const std::string hexStr ,unsigned char* pData);
 http parseURL(std::string url);
+int  __stdcall StartAddress (CM3u8Download * downloader);
 #endif
