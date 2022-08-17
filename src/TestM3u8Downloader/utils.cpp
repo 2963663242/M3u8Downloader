@@ -210,3 +210,92 @@ void hex2Bin(const std::string hexStr ,unsigned char* pData)
 	}
 }
 
+http parseURL(std::string url){
+	const char *parseptr1;
+	const char *parseptr2;
+	int len;
+	int i;
+	http hUrl;
+	parseptr2 = url.c_str();
+	parseptr1 = strchr(parseptr2, ':');
+	if ( NULL == parseptr1 ) {
+		return hUrl;
+	}
+
+	len = parseptr1 - parseptr2;
+	for ( i = 0; i < len; i++ ) {
+		if ( !isalpha(parseptr2[i]) ) {
+
+			return hUrl;
+		}
+	}
+	hUrl.protocol = std::string(parseptr2,0,len); //get protocol
+	parseptr1++;
+	parseptr2 = parseptr1;
+	for ( i = 0; i < 2; i++ ) {
+		if ( '/' != *parseptr2 ) {
+
+			return hUrl;
+		}
+		parseptr2++;
+	}
+
+	parseptr1 = strchr(parseptr2, ':');
+	if ( NULL == parseptr1 )//еп╤оспнч╤к©з╨е
+	{
+		parseptr1 = strchr(parseptr2, '/');
+		if ( NULL == parseptr1 ) {
+
+			return hUrl;}
+		len = parseptr1 - parseptr2;
+
+		hUrl.hostname = std::string(parseptr2,0,len); //get hostname
+	}
+	else{
+		len = parseptr1 - parseptr2;
+		hUrl.hostname = std::string(parseptr2,0,len); //get hostname
+		parseptr1++;
+		parseptr2 = parseptr1;
+		parseptr1 = strchr(parseptr2, '/');
+		if ( NULL == parseptr1 ) {
+
+			return hUrl;
+		}
+		len = parseptr1 - parseptr2;
+
+		hUrl.port = std::string(parseptr2,0,len); //get port
+	}
+
+	parseptr1++;
+	parseptr2 = parseptr1;
+	while ( '\0' != *parseptr1 && '?' != *parseptr1  && '#' != *parseptr1 ) {
+		parseptr1++;
+	}
+	len = parseptr1 - parseptr2;
+
+	hUrl.path = std::string(parseptr2,0,len); //get path
+
+	parseptr2=parseptr1;
+	if ( '?' == *parseptr1 ) {
+		parseptr2++;
+		parseptr1 = parseptr2;
+		while ( '\0' != *parseptr1 && '#' != *parseptr1 ) {
+			parseptr1++;
+		}
+		len = parseptr1 - parseptr2;
+
+		hUrl.query = std::string(parseptr2,0,len); //get query
+	}
+
+	parseptr2=parseptr1;
+	if ( '#' == *parseptr1 ) {
+		parseptr2++;
+		parseptr1 = parseptr2;
+		while ( '\0' != *parseptr1 ) {
+			parseptr1++;
+		}
+		len = parseptr1 - parseptr2;
+		hUrl.fragment = std::string(parseptr2,0,len); //get fragment
+	}
+	return hUrl;
+}

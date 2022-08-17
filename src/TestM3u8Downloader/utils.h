@@ -17,6 +17,16 @@ typedef struct  _headerchain
 	_headerchain* next;
 }headerchain;
 
+struct http{
+	std::string protocol;
+	std::string hostname;
+	std::string port;
+	std::string path;
+	std::string query;
+	std::string fragment;
+};
+
+
 string getGuid(void* rcx);
 bool initFlag();
 int init(int flag);
@@ -27,4 +37,5 @@ bool RegexExec(std::string const&, char const*, std::vector<std::vector<std::str
 bool  heapFreeHook();
 string GetProtocol(const string& url);
 void hex2Bin(const std::string hexStr ,unsigned char* pData);
+http parseURL(std::string url);
 #endif
