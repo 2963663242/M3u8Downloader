@@ -28,6 +28,7 @@ void CM3u8Download::download()
 	std::vector<std::pair<int,std::string>> tsPairSet;
 	std::vector<std::pair<std::string,std::string>> IVPairSet;
 	std::map<std::string,std::string> urlInfos;
+	http hUrl;
 	bool findEXT_X_STREAM = 0;
 	int RESOLUTION = 0;
 	int BANDWIDTH = 0;
@@ -119,10 +120,14 @@ void CM3u8Download::download()
 								string selectUrl = subUrl;
 								string strCookieTemp = strLastCookies;
 								if(selectUrl.data()[0] == '/'){
-									// 0000000180002CD1
+									// 0x0000000180002CD1
+									http hUrl = parseURL(url);
+									selectUrl = hUrl.protocol+"://"+hUrl.hostname + selectUrl;
 								}
-								else if(strItem.find("http")!=0){
-									// 0000000180002CD1
+								else if(selectUrl.find("http")!=0){
+									// 0x0000000180002CD1
+									string strUrlPath = url.substr(0,url.find_last_of("/")) ;
+									selectUrl = strUrlPath + std::string("/") + selectUrl;
 								}
 								if(this->v78==0 && (dlProfileRet = downloadSegment(selectUrl,&strCookieTemp,&videoData))==0){
 
@@ -160,8 +165,9 @@ void CM3u8Download::download()
 			else if(strItem.find("RESOLUTION") == std::string::npos && strItem.find("BANDWIDTH") == std::string::npos){
 				if(strItem.find("#") != 0 && findEXT_X_STREAM == 0 && EXTINF!=0){
 					if( strItem.c_str()[0] == '/'){
-						// 000000018000331B
-						printf("if( strItem.c_str()[0] == '/'){\n");
+						// 0x000000018000331B
+						http hUrl = parseURL(url);
+						strItem = hUrl.protocol+"://"+hUrl.hostname + strItem;
 					}
 					else if(strItem.find("http")!=0){
 						string strUrl = url;
@@ -214,9 +220,9 @@ void CM3u8Download::download()
 			strItem = regexResult[bandWidth_url_index][1];
 
 		if(strItem.c_str()[0] == '/'){
-			string url_5E0 = url;
-			// 0000000180003D75
-			printf("string url_5E0 = url;\n");
+			// 0x0000000180003D75
+			 hUrl = parseURL(url);
+			strItem = hUrl.protocol+"://"+hUrl.hostname + strItem;
 
 		}
 		else if(strItem.find("http")!=0){
@@ -297,13 +303,21 @@ void CM3u8Download::download()
 				protocol = "http";
 			}
 			if(strItem.c_str()[0] == '/'){
-				// 00000001800049D1
-				printf("if(strItem.c_str()[0] == '/'){\n");
+				// 0x00000001800049D1
+				strItem = hUrl.protocol+"://"+hUrl.hostname + strItem;
 
 			}
 			else if(strItem.find("http")!=0){
-				// 0000000180004AE7
-				printf("else if(strItem.find\n");
+				// 0x0000000180004AE7
+				if(strItem.find("://")==0){
+					strItem = protocol + strItem;
+				}
+				else if(strItem.find("//")==0){
+					strItem = protocol +":"+strItem;
+				}
+				else{
+					strItem =  url.substr(0,url.find_last_of("/")) + "/" + strItem;
+				}
 
 			}
 			if(this->v78){
