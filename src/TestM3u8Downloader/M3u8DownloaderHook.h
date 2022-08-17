@@ -84,5 +84,25 @@ public:
             return _strdup(downloader->state.data());
         return 0;
     }
+
+	static void MovieDLStop(CM3u8Download* downloader){
+		if(downloader)
+			downloader->stop();
+	}
+	static void MovieDLSetSpeedLimit(CM3u8Download* downloader,int speedLimit){
+		if(downloader)
+			downloader->speedLimit = speedLimit;
+	}
+	static long long int MovieDLGetLength(CM3u8Download* downloader){
+		if(downloader)
+			return downloader->totalSize ;
+		return 0;
+	}
+	static void MovieDLRelease(CM3u8Download* downloader){
+		if(downloader)
+			delete downloader;
+	}
+
+
 };
 

@@ -27,6 +27,15 @@ this->guid = this->getGuid();
 }
 CMovieDownloadBase::~CMovieDownloadBase()
 {
+	this->stop();
+	if(this->dsSavePath)
+		free(this->dsSavePath);
+	this->dsSavePath = 0;
+	free(this->url);
+	free(this->savePath);
+	free(this->v58);
+	free(this->strCookie);
+	free(this->useragent);
 }
 string CMovieDownloadBase::getGuid() {
 	char buffer[64] = { 0, };

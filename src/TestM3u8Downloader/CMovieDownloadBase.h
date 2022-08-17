@@ -25,24 +25,24 @@ public:
 	string getGuid();
 
 public:
-	//void *vft;
+
 	uintptr_t threadResult; //8
 	void  (*callback)(char *);  //10
 	long long int v18;   //18
 	char * dsSavePath; //20
 	char * savePath; // 28
-	char * infoSavePath;
-	char * url;
+	char * infoSavePath;//30
+	char * url;//38
 	char * strCookie;//40
 	long long int v48; 
-	char * useragent;
-	long long int v58;
+	char * useragent;//50
+	char * v58; 
 	int speedLimit; 
 	bool flag1;  //64
 	bool flag2;  //65
 	long long int downloadedSize; //68
 	long long int totalSize; //70
-	 int stopFlag; 
+	 int stopFlag; //78
 	 int stateType;
 	 string guid; //80
 	 string state; //A8
