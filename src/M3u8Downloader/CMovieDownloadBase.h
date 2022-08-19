@@ -1,43 +1,59 @@
 #pragma once
-#include <iostream>
 #include "utils.h"
+#include <process.h>
+#include <iostream>
+
+typedef  unsigned(__stdcall* _beginthreadex_proc_type) (void*);
+
 using namespace std;
+
+
+
+struct stateCallback;
+
 class CMovieDownloadBase
 {
 
 public:
-
 	CMovieDownloadBase();
-	virtual int start(bool flag1,bool flag2);
+	virtual ~CMovieDownloadBase();
+	virtual int start(bool flag1, bool flag2);
+	virtual void stop();
+	virtual void wait();
+	void setCallbackState(stateCallback  stateInfo);
+
+	string getGuid();
 
 public:
 
-	uintptr_t threadResult;
-	long long int v10;
-	long long int v18;
-	char * dsSavePath;
-	char * savePath;
-	char * infoSavePath;
-	char * url;
-	char * strCookie;
+	uintptr_t threadResult; //8
+	void  (*callback)(char*);  //10
+	void* callback2;   //18
+	char* dsSavePath; //20
+	char* savePath; // 28
+	char* infoSavePath;//30
+	char* url;//38
+	char* strCookie;//40
 	long long int v48;
-	long long int v50;
-	long long int v58;
-	int v60;
-	bool flag1;
-	bool flag2;
-	long long int v68;
-	long long int v70;
-	 int v78;
-	 int v7C;
-	 string guid;
-	 char v88;
-	 long long int v98;
-	 string vA8;
-	char vB0;
-	long long int vC0;
+	char* useragent;//50
+	char* v58;
+	int speedLimit;
+	bool flag1;  //64
+	bool flag2;  //65
+	long long int downloadedSize; //68
+	long long int totalSize; //70
+	int stopFlag; //78
+	int stateType;
+	string guid; //80
+	string state; //A8
 };
 
-//extern  LONG (WINAPI* lpTopLevelExceptionFilter)(
-//		_In_ struct _EXCEPTION_POINTERS* ExceptionInfo
-//		);
+
+
+struct stateCallback
+{
+	int type;
+	__int64 speed;
+	__int64 downloadingSize;
+	__int64 totalSize;
+};

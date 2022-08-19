@@ -110,7 +110,7 @@ typedef void CURLSH;
  * libcurl external API function linkage decorations.
  */
 
-#ifdef CURL_STATICLIB
+#if 1
 #  define CURL_EXTERN
 #elif defined(CURL_WIN32) || defined(__SYMBIAN32__) || \
      (__has_declspec_attribute(dllexport) && \

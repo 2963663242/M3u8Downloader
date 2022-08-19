@@ -3,7 +3,6 @@
 #include "CMovieDownloadBase.h"
 #include "utils.h"
 
-__int64* sub_180009CC0();
 
 class CM3u8Download: public CMovieDownloadBase
 {
