@@ -42,4 +42,5 @@ string GetProtocol(const string& url);
 void hex2Bin(const std::string hexStr ,unsigned char* pData);
 http parseURL(std::string url);
 int  __stdcall StartAddress (CM3u8Download * downloader);
+int deleteFile(char *filename);
 #endif

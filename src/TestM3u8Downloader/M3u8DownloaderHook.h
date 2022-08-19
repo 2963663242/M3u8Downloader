@@ -103,6 +103,19 @@ public:
 			delete downloader;
 	}
 
+	static void MovieDLSetCallback(CM3u8Download* downloader,void  (*callback)(char *),void *callback2){
+		if(downloader){
+				downloader->callback = callback;
+				downloader->callback2 = callback2;
+		}
+			
+	}
+	static void MovieDLDeleteTempFiles(CM3u8Download* downloader){
+		if(downloader){
+			deleteFile(downloader->dsSavePath);
+			deleteFile(downloader->infoSavePath);
+		}
 
+	}
 };
 

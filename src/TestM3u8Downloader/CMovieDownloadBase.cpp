@@ -5,7 +5,7 @@
 CMovieDownloadBase::CMovieDownloadBase()
 {	this->threadResult = 0;
 this->callback = 0;
-this->v18 = 0;
+this->callback2 = 0;
 this->dsSavePath = 0;
 this->savePath = 0;
 this->infoSavePath = 0;

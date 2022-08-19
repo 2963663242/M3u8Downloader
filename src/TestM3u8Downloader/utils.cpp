@@ -313,3 +313,15 @@ int __stdcall StartAddress (CM3u8Download * downloader){
 	}
 	return 0;
 }
+
+int deleteFile(char *filename){
+
+	if(!DeleteFile(filename)){
+		int err = GetLastError();
+		if(err){
+		
+			return -1;
+		}
+	}
+	return 0;
+}

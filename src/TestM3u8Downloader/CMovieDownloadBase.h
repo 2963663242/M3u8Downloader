@@ -28,7 +28,7 @@ public:
 
 	uintptr_t threadResult; //8
 	void  (*callback)(char *);  //10
-	long long int v18;   //18
+	void * callback2;   //18
 	char * dsSavePath; //20
 	char * savePath; // 28
 	char * infoSavePath;//30
