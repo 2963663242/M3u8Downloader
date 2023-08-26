@@ -1,9 +1,0 @@
-Request
-0x218 void * 
-0x23C bool set  0x218是否设置成功，为零表示v218==fwrite
-0x444 int size    	  url的长度
-0x560 char * url
-0x640 char * url_
-0x648 int 
-
-setRequestProperty

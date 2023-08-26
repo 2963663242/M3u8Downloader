@@ -1,0 +1,22 @@
+# 指定编译的最小版本
+cmake_minimum_required(VERSION 3.0.0) 
+
+
+# 指定解决方案的名字 和版本
+project(M3u8Downloader VERSION 0.1.0)
+
+# 设置c++标准
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 生成pdb调试信息
+IF(MSVC)
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
+set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
+ENDIF()
+
+
+# 增加子目录
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/M3u8Downloader)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/TestM3u8Downloader)
